@@ -1,0 +1,1881 @@
+{
+	"info": {
+		"_postman_id": "92c139c6-d2ae-4545-b52b-30bd56eaea4b",
+		"name": "Team12_SmartDietAPIs Dietician",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37337966",
+		"_collection_link": "https://team12-api-hackathon.postman.co/workspace/Team12_SmartDiet-APIs_Postman-H~642872c2-9787-4e43-8117-f254f6d07eba/collection/28020028-92c139c6-d2ae-4545-b52b-30bd56eaea4b?action=share&source=collection_link&creator=37337966"
+	},
+	"item": [
+		{
+			"name": "USER MODULE",
+			"item": [
+				{
+					"name": "ADMIN login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jasonData = pm.response.json();\r",
+									"pm.environment.set(\"adminToken\",jasonData.token);\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Content-Type is present\", function () {\r",
+									"    pm.response.to.have.header(\"Content-Type\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"test\",\r\n  \"userLoginEmail\": \"Team12@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"password\": \"test\",\r\n  \"userLoginEmail\": \"Team12@gmail.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
+									"protocol": "https",
+									"host": [
+										"dietician-july-api-hackathon-80f2590665cc",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"dietician",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722456560&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=V6K0MMYjmGWSCdAx65Gj%2BcXNZvyg59llhGtpLv%2FBiKg%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722456560&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=V6K0MMYjmGWSCdAx65Gj%2BcXNZvyg59llhGtpLv%2FBiKg%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 31 Jul 2024 20:09:20 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyNDU2NTYwLCJleHAiOjE3MjI0ODUzNjB9.aN0EDQLIgWm-VBV9U6Oh2k6olBbS8JK-2h2I8OEwWBchdWgg_P747XlCpTgAHBdljqQlNcWZchjvjuYL2zbSVQ\",\n    \"type\": \"Bearer \",\n    \"userId\": 7054,\n    \"loginUserEmail\": \"Team12@gmail.com\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "ADMIN logout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyNDU2NTYwLCJleHAiOjE3MjI0ODUzNjB9.aN0EDQLIgWm-VBV9U6Oh2k6olBbS8JK-2h2I8OEwWBchdWgg_P747XlCpTgAHBdljqQlNcWZchjvjuYL2zbSVQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/logoutdietician",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"logoutdietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/logoutdietician",
+									"protocol": "https",
+									"host": [
+										"dietician-july-api-hackathon-80f2590665cc",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"dietician",
+										"logoutdietician"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722457639&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=N5PoH10sR4Efxp4nxwr7DNrVNnqWgiuKHKYnXPpb%2BJ4%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722457639&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=N5PoH10sR4Efxp4nxwr7DNrVNnqWgiuKHKYnXPpb%2BJ4%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "17"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 31 Jul 2024 20:27:19 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "Logout successful"
+						}
+					]
+				},
+				{
+					"name": "DIETICIAN LOGIN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jasonData= pm.response.json();\r",
+									"pm.environment.set(\"dieticianToken\",jasonData.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"Funny09\",\r\n  \"userLoginEmail\": \"Reina_Ruecker97@yahoo.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "DIETICIAN LOGIN 08/01",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"password\": \"Funny09\",\r\n  \"userLoginEmail\": \"Reina_Ruecker97@yahoo.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
+									"protocol": "https",
+									"host": [
+										"dietician-july-api-hackathon-80f2590665cc",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"dietician",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722520227&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=JiDYcXOGEN%2F0Nm2Ku2I9JUFQOoOPw08S2Ss1hpirl8k%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722520227&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=JiDYcXOGEN%2F0Nm2Ku2I9JUFQOoOPw08S2Ss1hpirl8k%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Aug 2024 13:50:27 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSZWluYV9SdWVja2VyOTdAeWFob28uY29tIiwiaWF0IjoxNzIyNTIwMjI3LCJleHAiOjE3MjI1NDkwMjd9.yLY-qKLdadSwNMPDqN7VFWFGNVh32K4n-fAIlYV0lCLvWUWEcIl2omrXOAaM7H8lsaw8_ijBcFsWJvMNDYXhOw\",\n    \"type\": \"Bearer \",\n    \"userId\": 7142,\n    \"loginUserEmail\": \"Reina_Ruecker97@yahoo.com\",\n    \"roles\": [\n        \"ROLE_DIETICIAN\"\n    ]\n}"
+						},
+						{
+							"name": "DIETICIAN LOGIN",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"password\": \"Funny09\",\r\n  \"userLoginEmail\": \"Reina_Ruecker97@yahoo.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
+									"protocol": "https",
+									"host": [
+										"dietician-july-api-hackathon-80f2590665cc",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"dietician",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722459935&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=ZU9Yf9%2FXQIPCFA5%2Bqm%2BBX%2Fm%2BiPKg2uzmKpL5FVJmq6s%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722459935&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=ZU9Yf9%2FXQIPCFA5%2Bqm%2BBX%2Fm%2BiPKg2uzmKpL5FVJmq6s%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 31 Jul 2024 21:05:35 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSZWluYV9SdWVja2VyOTdAeWFob28uY29tIiwiaWF0IjoxNzIyNDU5OTM1LCJleHAiOjE3MjI0ODg3MzV9.CwkEh3-Q7SGg3owo6ZlApiqCL-ZtWtkGKoKscfVZs4E9zfaq2dcFuQ6BY2SnDrxtNocXe1ok0tbhrtjZ7Gk1Uw\",\n    \"type\": \"Bearer \",\n    \"userId\": 7142,\n    \"loginUserEmail\": \"Reina_Ruecker97@yahoo.com\",\n    \"roles\": [\n        \"ROLE_DIETICIAN\"\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Patient Module",
+			"item": [
+				{
+					"name": "Create Patient",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSZWluYV9SdWVja2VyOTdAeWFob28uY29tIiwiaWF0IjoxNzIyNDU5OTM1LCJleHAiOjE3MjI0ODg3MzV9.CwkEh3-Q7SGg3owo6ZlApiq...",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "patientInfo",
+									"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345983\",\n\"Email\": \"smartdiet@gmail.com\",\n\"Allergy\": \"soy\",\n\"FoodPreference\": \"jain\",\n\"CuisineCategory\":\"indian\",\n\"DateOfBirth\": \"1986-02-14\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+								},
+								{
+									"key": "PtInfo",
+									"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanuts\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"patient"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "patientInfo",
+											"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345983\",\n\"Email\": \"smartdiet@gmail.com\",\n\"Allergy\": \"soy\",\n\"FoodPreference\": \"jain\",\n\"CuisineCategory\":\"indian\",\n\"DateOfBirth\": \"1986-02-14\"\n}",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient",
+									"protocol": "https",
+									"host": [
+										"dietician-july-api-hackathon-80f2590665cc",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"dietician",
+										"patient"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722460648&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=7lDaY9ld6NskRFkFKPQXQoWPgxqbgHVpV4uFMUWegdY%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722460648&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=7lDaY9ld6NskRFkFKPQXQoWPgxqbgHVpV4uFMUWegdY%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 31 Jul 2024 21:17:29 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"patientId\": 33,\n    \"FirstName\": \"malli\",\n    \"LastName\": \"malli\",\n    \"ContactNumber\": \"9867345983\",\n    \"Email\": \"smartdiet@gmail.com\",\n    \"Allergy\": \"soy\",\n    \"FoodPreference\": \"jain\",\n    \"CuisineCategory\": \"indian\",\n    \"FileMorbidity\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66aaa9e9e6f5802145ab051c\": \"Prediabetic \\nBlood Pressure: Hypotension \\n\"\n    },\n    \"DateOfBirth\": \"1986-02-14\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-07-31T21:17:29.088+00:00\"\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Patient Morbidity Details",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Create Patient_scenarios",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dieticianToken_ru}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "patientInfo",
+									"value": "{ \"FirstName\": \"Mary\",\n\"LastName\": \"Singh\",\n\"ContactNumber\": \"9005089789\",\n\"Email\": \"mary@gmail.com\",\n\"Allergy\": \"PEANUT\",\n\"FoodPreference\": \"Vegan\",\n\"CuisineCategory\":\"Indian\",\n\"DateOfBirth\": \"1977-02-14\"\n}\n",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": [
+										"postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d",
+										"postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29"
+									]
+								}
+							]
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"patient"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Patient_file",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "patientInfo",
+											"value": "{ \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanut\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient",
+									"protocol": "https",
+									"host": [
+										"dietician-july-api-hackathon-80f2590665cc",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"dietician",
+										"patient"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722523065&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=yF0iWcD0oVNzIUDXhITbabGgp4lzTQYQZodXshz%2Bhtk%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722523065&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=yF0iWcD0oVNzIUDXhITbabGgp4lzTQYQZodXshz%2Bhtk%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Aug 2024 14:37:45 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"patientId\": 129,\n    \"FirstName\": \"Ram\",\n    \"LastName\": \"Setu\",\n    \"ContactNumber\": \"9009089789\",\n    \"Email\": \"ram@gmail.com\",\n    \"Allergy\": \"Peanut\",\n    \"FoodPreference\": \"NonVeg\",\n    \"CuisineCategory\": \"sindhi\",\n    \"FileMorbidity\": {\n        \"66ab9db93e6c022b073da1f5\": {\n            \"T3\": \"6.3 ng/mL\",\n            \"T4\": \"15.7 µg/dL\",\n            \"TSH\": \"0.016 µIU/mL\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66ab9db93e6c022b073da1f5\": \"Thyroid: Hyperthyroidism \\nBlood Pressure: Hypotension \\n\"\n    },\n    \"DateOfBirth\": \"1987-02-14\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66ab9db93e6c022b073da1f5\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-08-01T14:37:45.435+00:00\"\n}"
+						},
+						{
+							"name": "Create Patient_multiplefiles",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "patientInfo",
+											"value": "{ \"FirstName\": \"Mary\",\n\"LastName\": \"Singh\",\n\"ContactNumber\": \"9005089789\",\n\"Email\": \"mary@gmail.com\",\n\"Allergy\": \"PEANUT\",\n\"FoodPreference\": \"Vegan\",\n\"CuisineCategory\":\"Indian\",\n\"DateOfBirth\": \"1977-02-14\"\n}\n",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": [
+												"postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d",
+												"postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29"
+											]
+										}
+									]
+								},
+								"url": {
+									"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient",
+									"protocol": "https",
+									"host": [
+										"dietician-july-api-hackathon-80f2590665cc",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"dietician",
+										"patient"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722525638&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=07u4TRNrhPcZ3XsTHCOihrEcn0f4HKvsBw9YoZLqyGc%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722525638&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=07u4TRNrhPcZ3XsTHCOihrEcn0f4HKvsBw9YoZLqyGc%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Aug 2024 15:20:39 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"patientId\": 137,\n    \"FirstName\": \"Mary\",\n    \"LastName\": \"Singh\",\n    \"ContactNumber\": \"9005089789\",\n    \"Email\": \"mary@gmail.com\",\n    \"Allergy\": \"PEANUT\",\n    \"FoodPreference\": \"Vegan\",\n    \"CuisineCategory\": \"Indian\",\n    \"FileMorbidity\": {\n        \"66aba7c73e6c022b073da219\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66aba7c73e6c022b073da21b\": {\n            \"T3\": \"6.3 ng/mL\",\n            \"T4\": \"15.7 µg/dL\",\n            \"TSH\": \"0.016 µIU/mL\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66aba7c73e6c022b073da219\": \"Prediabetic \\nBlood Pressure: Hypotension \\n\",\n        \"66aba7c73e6c022b073da21b\": \"Thyroid: Hyperthyroidism \\n\"\n    },\n    \"DateOfBirth\": \"1977-02-14\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66aba7c73e6c022b073da219\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-08-01T15:20:39.153+00:00\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Morbidity Module",
+			"item": [
+				{
+					"name": "Get all Morbidities",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/morbidity",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"morbidity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Morbidity condition by Test name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dieticianToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/morbidity/HbA1c",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"morbidity",
+								"HbA1c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"test\",\r\n  \"userLoginEmail\": \"Team12@gmail.com\"\r\n}\r\n\r\n\r\n\r\n\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722409061&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=EsttPqlXFq6ujH%2FFXjb%2BlmCk2N6tbncMQkSSW03kgds%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722409061&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=EsttPqlXFq6ujH%2FFXjb%2BlmCk2N6tbncMQkSSW03kgds%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 31 Jul 2024 06:57:41 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyNDA5MDYxLCJleHAiOjE3MjI0Mzc4NjF9.qvPZw0DV3L8GCtmI0-iXUgDOz4U4aLvdfEfS26kltULivOnst1OYvAwQ1QcWWOTOvoN0K0qUL5cJq_bMrPj8Mg\",\n    \"type\": \"Bearer \",\n    \"userId\": 7054,\n    \"loginUserEmail\": \"Team12@gmail.com\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Dietician",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyNDU2NTYwLCJleHAiOjE3MjI0ODUzNjB9.aN0EDQLIgWm-VBV9U6Oh2k6olBbS8JK-2h2I8OEwWBchdWgg_P747XlCpTgAHBdljqQlNcWZchjvjuYL2zbSVQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"1010101010\",\r\n  \"DateOfBirth\": \"1960-01-26T18:14:08.570Z\",\r\n  \"Education\": \"BSc. Test\",\r\n  \"Email\": \"{{$randomEmail}}\",\r\n  \"Firstname\": \"{{$randomFirstName}}\",\r\n  \"HospitalCity\": \"{{$randomCity}}\",\r\n  \"HospitalName\": \"{{$randomCompanyName}}\",\r\n  \"HospitalPincode\": \"123459\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"{{$randomLastName}}\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician",
+					"protocol": "https",
+					"host": [
+						"dietician-july-api-hackathon-80f2590665cc",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dietician",
+						"dietician"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ContactNumber\": \"{{$randomPhoneNumber}}\",\r\n  \"DateOfBirth\": \"{{$randomDatePast}}\",\r\n  \"Education\": \"BSc. Test\",\r\n  \"Email\": \"{{$randomEmail}}\",\r\n  \"Firstname\": \"{{$randomFirstName}}\",\r\n  \"HospitalCity\": \"{{$randomCity}}\",\r\n  \"HospitalName\": \"{{$randomCompanyName}}\",\r\n  \"HospitalPincode\": \"12345\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"{{$randomLastName}}\"\r\n \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/dietician\n",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"dietician\n"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722457906&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=WyjoDMFUidgz1cVut5ZT7i9BhZ5mGBxdESUsm2jbpsI%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722457906&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=WyjoDMFUidgz1cVut5ZT7i9BhZ5mGBxdESUsm2jbpsI%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 31 Jul 2024 20:31:46 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2024-07-31T20:31:46.401+00:00\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/dietician/dietician%0A\"\n}"
+				},
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ContactNumber\": \"1010101010\",\r\n  \"DateOfBirth\": \"1960-01-26T18:14:08.570Z\",\r\n  \"Education\": \"BSc. Test\",\r\n  \"Email\": \"{{$randomEmail}}\",\r\n  \"Firstname\": \"{{$randomFirstName}}\",\r\n  \"HospitalCity\": \"{{$randomCity}}\",\r\n  \"HospitalName\": \"{{$randomCompanyName}}\",\r\n  \"HospitalPincode\": \"123459\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"{{$randomLastName}}\"\r\n \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"dietician"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722458957&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=6EEpTnwQf47VHkjW5UOcOtrB%2BL%2BIzDsjTEZWUugz2L4%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722458957&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=6EEpTnwQf47VHkjW5UOcOtrB%2BL%2BIzDsjTEZWUugz2L4%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 31 Jul 2024 20:49:17 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"errorCode\": \"DUPLICATE_ENTITY\",\n    \"errorMessage\": \"Dietician user with given date of birth and contact already exists\"\n}"
+				},
+				{
+					"name": "Create Dietician",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ContactNumber\": \"1010101010\",\r\n  \"DateOfBirth\": \"1960-01-26T18:14:08.570Z\",\r\n  \"Education\": \"BSc. Test\",\r\n  \"Email\": \"{{$randomEmail}}\",\r\n  \"Firstname\": \"{{$randomFirstName}}\",\r\n  \"HospitalCity\": \"{{$randomCity}}\",\r\n  \"HospitalName\": \"{{$randomCompanyName}}\",\r\n  \"HospitalPincode\": \"123459\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"{{$randomLastName}}\"\r\n \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"dietician"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722458811&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=DHUrACbCebNHopwXXS%2FjYc%2B%2BbTTGw5fXcNyQQ1YAlAI%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722458811&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=DHUrACbCebNHopwXXS%2FjYc%2B%2BbTTGw5fXcNyQQ1YAlAI%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "Location",
+							"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/221"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 31 Jul 2024 20:46:52 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 221,\n    \"loginPassword\": \"Funny09\",\n    \"Firstname\": \"Mose\",\n    \"Lastname\": \"Rodriguez\",\n    \"ContactNumber\": \"1010101010\",\n    \"DateOfBirth\": \"1960-01-26T18:14:08.570+00:00\",\n    \"Email\": \"Reina_Ruecker97@yahoo.com\",\n    \"HospitalName\": \"Wolff, O'Hara and Parker\",\n    \"HospitalStreet\": \"Test Street\",\n    \"HospitalCity\": \"Walkerview\",\n    \"HospitalPincode\": \"123459\",\n    \"Education\": \"BSc. Test\"\n}"
+				}
+			]
+		},
+		{
+			"name": "New Request Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.cnnccceyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyNDA5MDYxLCJleHAiOjE3MjI0Mzc4NjF9.qvPZw0DV3L8GCtmI0-iXUgDOz4U4aLvdfEfS26kltULivOnst1OYvAwQ1QcWWOTOvoN0K0qUL5cJq_bMrPj8Mg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"{{$randomPhoneNumber}}\",\r\n  \"DateOfBirth\": \"{{$randomDatePast}}\",\r\n  \"Education\": \"BSc. Test\",\r\n  \"Email\": \"{{$randomEmail}}\",\r\n  \"Firstname\": \"{{$randomFirstName}}\",\r\n  \"HospitalCity\": \"{{$randomCity}}\",\r\n  \"HospitalName\": \"{{$randomCompanyName}}\",\r\n  \"HospitalPincode\": \"12345\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"{{$randomLastName}}\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/logoutdietician\n",
+					"protocol": "https",
+					"host": [
+						"dietician-july-api-hackathon-80f2590665cc",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dietician",
+						"logoutdietician\n"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ContactNumber\": \"{{$randomPhoneNumber}}\",\r\n  \"DateOfBirth\": \"{{$randomDatePast}}\",\r\n  \"Education\": \"BSc. Test\",\r\n  \"Email\": \"{{$randomEmail}}\",\r\n  \"Firstname\": \"{{$randomFirstName}}\",\r\n  \"HospitalCity\": \"{{$randomCity}}\",\r\n  \"HospitalName\": \"{{$randomCompanyName}}\",\r\n  \"HospitalPincode\": \"12345\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"{{$randomLastName}}\"\r\n \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/dietician\n",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"dietician\n"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722457906&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=WyjoDMFUidgz1cVut5ZT7i9BhZ5mGBxdESUsm2jbpsI%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722457906&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=WyjoDMFUidgz1cVut5ZT7i9BhZ5mGBxdESUsm2jbpsI%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 31 Jul 2024 20:31:46 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2024-07-31T20:31:46.401+00:00\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/dietician/dietician%0A\"\n}"
+				}
+			]
+		},
+		{
+			"name": "report3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{dieticianToken_ru}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "report3_2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{dieticianToken_ru}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "{{bearer token}}",
+			"value": "\"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyNDA5MDYxLCJleHAiOjE3MjI0Mzc4NjF9.qvPZw0DV3L8GCtmI0-iXUgDOz4U4aLvdfEfS26kltULivOnst1OYvAwQ1QcWWOTOvoN0K0qUL5cJq_bMrPj8Mg\","
+		}
+	]
+}
