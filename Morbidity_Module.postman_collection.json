@@ -1,53 +1,31 @@
 {
 	"info": {
 		"_postman_id": "9c0324fa-ca03-4943-a75e-d8f8713ccb0b",
-		"name": "Morbidity Module",
+		"name": "Morbidity_Module",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "33024937",
 		"_collection_link": "https://team12-api-hackathon.postman.co/workspace/Team12_SmartDiet-APIs_Postman-H~642872c2-9787-4e43-8117-f254f6d07eba/collection/33024937-9c0324fa-ca03-4943-a75e-d8f8713ccb0b?action=share&source=collection_link&creator=33024937"
 	},
 	"item": [
 		{
-			"name": "Admin Login",
-			"event": [
+			"name": "User Login",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jasonData= pm.response.json();\r",
-							"pm.collectionVariables.set(\"adminToken_Collec\",jasonData.token);"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"password\": \"test\",\r\n  \"userLoginEmail\": \"Team12@gmail.com\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jasonData= pm.response.json();\r",
+									"pm.collectionVariables.set(\"adminToken_Collec\",jasonData.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURL}}/login",
-					"host": [
-						"{{baseURL}}"
 					],
-					"path": [
-						"login"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "New Request",
-					"originalRequest": {
+					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -69,442 +47,138 @@
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Server",
-							"value": "Cowboy"
-						},
-						{
-							"key": "Report-To",
-							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722507181&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=o8%2BDiNig1%2FpqZH%2BttDvZax5a2uM7bkQ%2Be46nnpZmLDk%3D\"}]}"
-						},
-						{
-							"key": "Reporting-Endpoints",
-							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722507181&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=o8%2BDiNig1%2FpqZH%2BttDvZax5a2uM7bkQ%2Be46nnpZmLDk%3D"
-						},
-						{
-							"key": "Nel",
-							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Vary",
-							"value": "Origin"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Method"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Headers"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "X-Xss-Protection",
-							"value": "1; mode=block"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, no-store, max-age=0, must-revalidate"
-						},
-						{
-							"key": "Pragma",
-							"value": "no-cache"
-						},
-						{
-							"key": "Expires",
-							"value": "0"
-						},
-						{
-							"key": "Strict-Transport-Security",
-							"value": "max-age=31536000 ; includeSubDomains"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 01 Aug 2024 10:13:01 GMT"
-						},
-						{
-							"key": "Via",
-							"value": "1.1 vegur"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyNTA3MTgxLCJleHAiOjE3MjI1MzU5ODF9.M4X1PiTZaQKfDtrQQDdjuu9WhQe2fRocRtyRCk4_Z5S2aG3mtm0gnO2wbb-G9jNyQdQcWQNgTXqab0Lk1-wZxA\",\n    \"type\": \"Bearer \",\n    \"userId\": 7054,\n    \"loginUserEmail\": \"Team12@gmail.com\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}"
-				}
-			]
-		},
-		{
-			"name": "Create Dietician",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{adminToken_Collec}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"ContactNumber\": \"1010101011\",\r\n  \"DateOfBirth\": \"1960-01-26T18:14:08.570Z\",\r\n  \"Education\": \"BSc. Test\",\r\n  \"Email\": \"Team12Dietician01@gmail.com\",\r\n  \"Firstname\": \"{{$randomFirstName}}\",\r\n  \"HospitalCity\": \"{{$randomCity}}\",\r\n  \"HospitalName\": \"{{$randomCompanyName}}\",\r\n  \"HospitalPincode\": \"123459\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"{{$randomLastName}}\"\r\n \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURL}}/dietician",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"dietician"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Create Dietician",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"ContactNumber\": \"1010101011\",\r\n  \"DateOfBirth\": \"1960-01-26T18:14:08.570Z\",\r\n  \"Education\": \"BSc. Test\",\r\n  \"Email\": \"Team12Dietician01@gmail.com\",\r\n  \"Firstname\": \"{{$randomFirstName}}\",\r\n  \"HospitalCity\": \"{{$randomCity}}\",\r\n  \"HospitalName\": \"{{$randomCompanyName}}\",\r\n  \"HospitalPincode\": \"123459\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"{{$randomLastName}}\"\r\n \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"password\": \"test\",\r\n  \"userLoginEmail\": \"Team12@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseURL}}/login",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"login"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/dietician",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"dietician"
-							]
-						}
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Server",
-							"value": "Cowboy"
-						},
-						{
-							"key": "Report-To",
-							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722508271&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=j36Of4%2FKY4wrsr474fPl4Ye6V3OvP5h5YS0HLQ0uuds%3D\"}]}"
-						},
-						{
-							"key": "Reporting-Endpoints",
-							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722508271&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=j36Of4%2FKY4wrsr474fPl4Ye6V3OvP5h5YS0HLQ0uuds%3D"
-						},
-						{
-							"key": "Nel",
-							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Vary",
-							"value": "Origin"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Method"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Headers"
-						},
-						{
-							"key": "Location",
-							"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/319"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "X-Xss-Protection",
-							"value": "1; mode=block"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, no-store, max-age=0, must-revalidate"
-						},
-						{
-							"key": "Pragma",
-							"value": "no-cache"
-						},
-						{
-							"key": "Expires",
-							"value": "0"
-						},
-						{
-							"key": "Strict-Transport-Security",
-							"value": "max-age=31536000 ; includeSubDomains"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 01 Aug 2024 10:31:11 GMT"
-						},
-						{
-							"key": "Via",
-							"value": "1.1 vegur"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 319,\n    \"loginPassword\": \"Divine98\",\n    \"Firstname\": \"Miles\",\n    \"Lastname\": \"Monahan\",\n    \"ContactNumber\": \"1010101011\",\n    \"DateOfBirth\": \"1960-01-26T18:14:08.570+00:00\",\n    \"Email\": \"Team12Dietician01@gmail.com\",\n    \"HospitalName\": \"Walter LLC\",\n    \"HospitalStreet\": \"Test Street\",\n    \"HospitalCity\": \"Fort Lauderdale\",\n    \"HospitalPincode\": \"123459\",\n    \"Education\": \"BSc. Test\"\n}"
-				}
-			]
-		},
-		{
-			"name": "Create Patient",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{dieticianToken_Collec}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "patientInfo",
-							"value": " { \"FirstName\": \"James\",\n\"LastName\": \"Straton\",\n\"ContactNumber\": \"1234567890\",\n\"Email\": \"team12patient01@gmail.com\",\n\"Allergy\": \"ALMOND\",\n\"FoodPreference\": \"Vegetarian\",\n\"CuisineCategory\":\"Indian\",\n\"DateOfBirth\": \"1986-02-14\"\n}\n",
-							"type": "text"
-						},
-						{
-							"key": "file",
-							"type": "file",
-							"src": "HyperThyroid_Report_final.pdf"
-						}
-					]
-				},
-				"url": {
-					"raw": "{{baseURL}}/patient",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"patient"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Create Dietician",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"ContactNumber\": \"1010101011\",\r\n  \"DateOfBirth\": \"1960-01-26T18:14:08.570Z\",\r\n  \"Education\": \"BSc. Test\",\r\n  \"Email\": \"Team12Dietician01@gmail.com\",\r\n  \"Firstname\": \"{{$randomFirstName}}\",\r\n  \"HospitalCity\": \"{{$randomCity}}\",\r\n  \"HospitalName\": \"{{$randomCompanyName}}\",\r\n  \"HospitalPincode\": \"123459\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"{{$randomLastName}}\"\r\n \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722507181&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=o8%2BDiNig1%2FpqZH%2BttDvZax5a2uM7bkQ%2Be46nnpZmLDk%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722507181&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=o8%2BDiNig1%2FpqZH%2BttDvZax5a2uM7bkQ%2Be46nnpZmLDk%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Aug 2024 10:13:01 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
 								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/dietician",
-							"host": [
-								"{{baseURL}}"
 							],
-							"path": [
-								"dietician"
-							]
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyNTA3MTgxLCJleHAiOjE3MjI1MzU5ODF9.M4X1PiTZaQKfDtrQQDdjuu9WhQe2fRocRtyRCk4_Z5S2aG3mtm0gnO2wbb-G9jNyQdQcWQNgTXqab0Lk1-wZxA\",\n    \"type\": \"Bearer \",\n    \"userId\": 7054,\n    \"loginUserEmail\": \"Team12@gmail.com\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}"
 						}
-					},
-					"status": "Created",
-					"code": 201,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Server",
-							"value": "Cowboy"
-						},
-						{
-							"key": "Report-To",
-							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722508271&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=j36Of4%2FKY4wrsr474fPl4Ye6V3OvP5h5YS0HLQ0uuds%3D\"}]}"
-						},
-						{
-							"key": "Reporting-Endpoints",
-							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722508271&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=j36Of4%2FKY4wrsr474fPl4Ye6V3OvP5h5YS0HLQ0uuds%3D"
-						},
-						{
-							"key": "Nel",
-							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Vary",
-							"value": "Origin"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Method"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Headers"
-						},
-						{
-							"key": "Location",
-							"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/319"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "X-Xss-Protection",
-							"value": "1; mode=block"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, no-store, max-age=0, must-revalidate"
-						},
-						{
-							"key": "Pragma",
-							"value": "no-cache"
-						},
-						{
-							"key": "Expires",
-							"value": "0"
-						},
-						{
-							"key": "Strict-Transport-Security",
-							"value": "max-age=31536000 ; includeSubDomains"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 01 Aug 2024 10:31:11 GMT"
-						},
-						{
-							"key": "Via",
-							"value": "1.1 vegur"
-						}
-					],
-					"cookie": [],
-					"body": "{\n    \"id\": 319,\n    \"loginPassword\": \"Divine98\",\n    \"Firstname\": \"Miles\",\n    \"Lastname\": \"Monahan\",\n    \"ContactNumber\": \"1010101011\",\n    \"DateOfBirth\": \"1960-01-26T18:14:08.570+00:00\",\n    \"Email\": \"Team12Dietician01@gmail.com\",\n    \"HospitalName\": \"Walter LLC\",\n    \"HospitalStreet\": \"Test Street\",\n    \"HospitalCity\": \"Fort Lauderdale\",\n    \"HospitalPincode\": \"123459\",\n    \"Education\": \"BSc. Test\"\n}"
-				}
-			]
-		},
-		{
-			"name": "Dietician Login",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jasonData= pm.response.json();\r",
-							"pm.collectionVariables.set(\"dieticianToken_Collec\",jasonData.token);"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"password\": \"Divine98\",\r\n  \"userLoginEmail\": \"Team12Dietician01@gmail.com\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{baseURL}}/login",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"login"
 					]
-				}
-			},
-			"response": [
+				},
 				{
-					"name": "New Request",
-					"originalRequest": {
+					"name": "Dietician Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData= pm.response.json();\r",
+									"pm.collectionVariables.set(\"dieticianToken_Collec\",jsonData.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"password\": \"test\",\r\n  \"userLoginEmail\": \"Team12@gmail.com\"\r\n}",
+							"raw": "{\r\n  \"password\": \"Divine98\",\r\n  \"userLoginEmail\": \"Team12Dietician01@gmail.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -521,103 +195,885 @@
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": []
+				},
+				{
+					"name": "Patient Login",
+					"event": [
 						{
-							"key": "Server",
-							"value": "Cowboy"
-						},
-						{
-							"key": "Report-To",
-							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722507181&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=o8%2BDiNig1%2FpqZH%2BttDvZax5a2uM7bkQ%2Be46nnpZmLDk%3D\"}]}"
-						},
-						{
-							"key": "Reporting-Endpoints",
-							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722507181&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=o8%2BDiNig1%2FpqZH%2BttDvZax5a2uM7bkQ%2Be46nnpZmLDk%3D"
-						},
-						{
-							"key": "Nel",
-							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Vary",
-							"value": "Origin"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Method"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Headers"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "X-Xss-Protection",
-							"value": "1; mode=block"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, no-store, max-age=0, must-revalidate"
-						},
-						{
-							"key": "Pragma",
-							"value": "no-cache"
-						},
-						{
-							"key": "Expires",
-							"value": "0"
-						},
-						{
-							"key": "Strict-Transport-Security",
-							"value": "max-age=31536000 ; includeSubDomains"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 01 Aug 2024 10:13:01 GMT"
-						},
-						{
-							"key": "Via",
-							"value": "1.1 vegur"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData= pm.response.json();\r",
+									"pm.collectionVariables.set(\"patientToken_Collec\",jsonData.token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
 						}
 					],
-					"cookie": [],
-					"body": "{\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyNTA3MTgxLCJleHAiOjE3MjI1MzU5ODF9.M4X1PiTZaQKfDtrQQDdjuu9WhQe2fRocRtyRCk4_Z5S2aG3mtm0gnO2wbb-G9jNyQdQcWQNgTXqab0Lk1-wZxA\",\n    \"type\": \"Bearer \",\n    \"userId\": 7054,\n    \"loginUserEmail\": \"Team12@gmail.com\",\n    \"roles\": [\n        \"ROLE_ADMIN\"\n    ]\n}"
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"password\": \"test\",\r\n  \"userLoginEmail\": \"team12patient01@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
 		{
-			"name": "Retrieve All Morbidities by Admin",
+			"name": "Admin Flow",
+			"item": [
+				{
+					"name": "Retrieve all morbidities with invalid URL - Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.notFoundRequest();\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{invalidURL}}//morbidity",
+							"host": [
+								"{{invalidURL}}"
+							],
+							"path": [
+								"",
+								"morbidity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve all morbidities without authorization - Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.unauthorizedRequest();\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve all morbidities - Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData= pm.response.json();\r",
+									"const morbidities= Array.from(new Set(jsonData.map(morbidity => morbidity.morbidityTestName)));\r",
+									"pm.variables.set(\"morbidityNames\",morbidities);\r",
+									"\r",
+									"pm.test(\"Response is a JSON array\", () => {\r",
+									"    pm.response.to.be.json;\r",
+									"    pm.expect(jsonData).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"commonTests.validGetPutRequest();\r",
+									"commonTests.morbidityGetRequest();\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Retrieve All Morbidities",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseURL}}/morbidity",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"morbidity"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722507550&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=sUqX55YdaGb%2F4QS2j34K5mwHHT5lJ5tJUffDsnlRT1Y%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722507550&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=sUqX55YdaGb%2F4QS2j34K5mwHHT5lJ5tJUffDsnlRT1Y%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 01 Aug 2024 10:19:10 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"morbidityId\": 1,\n        \"morbidityTestId\": \"DIA_FG\",\n        \"morbidityNameRegex\": \"(?i)(.*)fasting(.*)[sugarglucose](.*)|(.*)glucose(.*)fasting(.*)\",\n        \"morbidityTestName\": \"Fasting Glucose\",\n        \"morbidityTestUnit\": \"mg/dL\",\n        \"morbidityMarkerMinVal\": 125,\n        \"morbidityMarkerMaxVal\": 100\n    },\n    {\n        \"morbidityId\": 2,\n        \"morbidityTestId\": \"DIA_AG\",\n        \"morbidityNameRegex\": \"(?i)(.*)average(.*)glucose(.*)\",\n        \"morbidityTestName\": \"Average Glucose\",\n        \"morbidityTestUnit\": \"mg/dL\",\n        \"morbidityMarkerMinVal\": 121,\n        \"morbidityMarkerMaxVal\": 150\n    },\n    {\n        \"morbidityId\": 3,\n        \"morbidityTestId\": \"DIA_PG\",\n        \"morbidityNameRegex\": \"(?i)(.*)plasma(.*)glucose(.*)\",\n        \"morbidityTestName\": \"Plasma Glucose\",\n        \"morbidityTestUnit\": \"mg/dL\",\n        \"morbidityMarkerMinVal\": 140,\n        \"morbidityMarkerMaxVal\": 199\n    },\n    {\n        \"morbidityId\": 4,\n        \"morbidityTestId\": \"DIA_HBA1C\",\n        \"morbidityNameRegex\": \"(.*)HbA[1I]c(.*)|(.*)H(.*)P(.*)L(.*)C(.*)\",\n        \"morbidityTestName\": \"HbA1c\",\n        \"morbidityTestUnit\": \"%\",\n        \"morbidityMarkerMinVal\": 5.7,\n        \"morbidityMarkerMaxVal\": 6.5\n    },\n    {\n        \"morbidityId\": 5,\n        \"morbidityTestId\": \"THYRO_TSH\",\n        \"morbidityNameRegex\": \"(?i)(.*)T(.*)S(.*)H(.*)|(.*)THYROID STIMULATING HORMONE(.*)\",\n        \"morbidityTestName\": \"TSH\",\n        \"morbidityTestUnit\": \"μIU/ml\",\n        \"morbidityMarkerMinVal\": 0.55,\n        \"morbidityMarkerMaxVal\": 4.78\n    },\n    {\n        \"morbidityId\": 6,\n        \"morbidityTestId\": \"THYRO_TSH_1\",\n        \"morbidityNameRegex\": \"(?i)(.*)T(.*)S(.*)H(.*)|(.*)THYROID STIMULATING HORMONE(.*)\",\n        \"morbidityTestName\": \"TSH\",\n        \"morbidityTestUnit\": \"uIU/ml\",\n        \"morbidityMarkerMinVal\": 0.55,\n        \"morbidityMarkerMaxVal\": 4.78\n    },\n    {\n        \"morbidityId\": 7,\n        \"morbidityTestId\": \"THYRO_T3\",\n        \"morbidityNameRegex\": \"(?i)(.*)T3(.*)\",\n        \"morbidityTestName\": \"T3\",\n        \"morbidityTestUnit\": \"ng/dL\",\n        \"morbidityMarkerMinVal\": 60,\n        \"morbidityMarkerMaxVal\": 180\n    },\n    {\n        \"morbidityId\": 8,\n        \"morbidityTestId\": \"THYRO_T3_1\",\n        \"morbidityNameRegex\": \"(?i)(.*)T3(.*)\",\n        \"morbidityTestName\": \"T3\",\n        \"morbidityTestUnit\": \"ng/mL\",\n        \"morbidityMarkerMinVal\": 0.6,\n        \"morbidityMarkerMaxVal\": 1.8\n    },\n    {\n        \"morbidityId\": 9,\n        \"morbidityTestId\": \"THYRO_T3_2\",\n        \"morbidityNameRegex\": \"(?i)(.*)T3(.*)\",\n        \"morbidityTestName\": \"T3\",\n        \"morbidityTestUnit\": \"pg/mL\",\n        \"morbidityMarkerMinVal\": 1.5,\n        \"morbidityMarkerMaxVal\": 4.1\n    },\n    {\n        \"morbidityId\": 10,\n        \"morbidityTestId\": \"THYRO_T3_3\",\n        \"morbidityNameRegex\": \"(?i)(.*)T3(.*)\",\n        \"morbidityTestName\": \"T3\",\n        \"morbidityTestUnit\": \"nmol/L\",\n        \"morbidityMarkerMinVal\": 0.9,\n        \"morbidityMarkerMaxVal\": 2.76\n    },\n    {\n        \"morbidityId\": 11,\n        \"morbidityTestId\": \"THYRO_T4\",\n        \"morbidityNameRegex\": \"(?i)(.*)T4(.*)\",\n        \"morbidityTestName\": \"T4\",\n        \"morbidityTestUnit\": \"μg/dL\",\n        \"morbidityMarkerMinVal\": 5,\n        \"morbidityMarkerMaxVal\": 12\n    },\n    {\n        \"morbidityId\": 12,\n        \"morbidityTestId\": \"THYRO_T4_1\",\n        \"morbidityNameRegex\": \"(?i)(.*)T4(.*)\",\n        \"morbidityTestName\": \"T4\",\n        \"morbidityTestUnit\": \"ug/dL\",\n        \"morbidityMarkerMinVal\": 5,\n        \"morbidityMarkerMaxVal\": 12\n    },\n    {\n        \"morbidityId\": 13,\n        \"morbidityTestId\": \"THYRO_T4_2\",\n        \"morbidityNameRegex\": \"(?i)(.*)T4(.*)\",\n        \"morbidityTestName\": \"T4\",\n        \"morbidityTestUnit\": \"ng/dL\",\n        \"morbidityMarkerMinVal\": 0.8,\n        \"morbidityMarkerMaxVal\": 1.9\n    },\n    {\n        \"morbidityId\": 14,\n        \"morbidityTestId\": \"BP_LEVEL\",\n        \"morbidityNameRegex\": \"(?i)(.*)Blood(.*)Pressure(.*)\",\n        \"morbidityTestName\": \"Blood Pressure Levels\",\n        \"morbidityTestUnit\": \"mm Hg\",\n        \"morbidityMarkerMinVal\": 80,\n        \"morbidityMarkerMaxVal\": 130\n    },\n    {\n        \"morbidityId\": 15,\n        \"morbidityTestId\": \"THYRO_TSH_2\",\n        \"morbidityNameRegex\": \"(?i)(.*)T(.*)S(.*)H(.*)|(.*)THYROID STIMULATING HORMONE(.*)\",\n        \"morbidityTestName\": \"TSH\",\n        \"morbidityTestUnit\": \"mIU/L\",\n        \"morbidityMarkerMinVal\": 0.45,\n        \"morbidityMarkerMaxVal\": 4.12\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Retrieve morbidity condition by test name  with invalid URL - Admin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.notFoundRequest();\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{invalidURL}}/morbidity/{{validTestName}}",
+							"host": [
+								"{{invalidURL}}"
+							],
+							"path": [
+								"morbidity",
+								"{{validTestName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve morbidity condition by test name without authorization - Admin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.unauthorizedRequest();\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity/{{validTestName}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity",
+								"{{validTestName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve morbidity condition by invalid test name - Admin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.notFoundRequest();\r",
+									"\r",
+									"const jsonData= pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response body contains error details\", () => {\r",
+									" pm.expect(jsonData).to.have.property('errorCode', 'NOT_FOUND');\r",
+									" pm.expect(jsonData).to.have.property('errorMessage', 'Morbidity not found with MorbidityTestName : TSH ULTRASENSITIVE');\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity/{{invalidTestName}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity",
+								"{{invalidTestName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve morbidity condition by test name - Admin",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const morbidityNames= pm.variables.get(\"morbidityNames\");\r",
+									"pm.variables.set(\"testName\",morbidityNames.shift());\r",
+									"\r",
+									"if (Array.isArray(morbidityNames) && morbidityNames.length >0) {\r",
+									"    \r",
+									"    pm.execution.setNextRequest(\"Retrieve morbidity condition by test name - Admin\");\r",
+									"} else {\r",
+									"     pm.execution.setNextRequest(\"Retrieve all morbidities with invalid URL - Dietician\"); //\"Retrieve All Morbidities by Dietician\"\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData= pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response is a JSON array\", () => {\r",
+									"    pm.response.to.be.json;\r",
+									"    pm.expect(jsonData).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"commonTests.validGetPutRequest();\r",
+									"commonTests.morbidityGetRequest();\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response data matches the test name\", function () {\r",
+									"    jsonData.forEach(morbidity => {\r",
+									"        pm.expect(morbidity.morbidityTestName).to.eql(pm.variables.get('testName'));\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{adminToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity/{{testName}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity",
+								"{{testName}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dietician Flow",
+			"item": [
+				{
+					"name": "Retrieve all morbidities with invalid URL - Dietician",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.notFoundRequest();\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dieticianToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{invalidURL}}/morbidity",
+							"host": [
+								"{{invalidURL}}"
+							],
+							"path": [
+								"morbidity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve all morbidities without authorization - Dietician",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.unauthorizedRequest();\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve all morbidities - Dietician",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData= pm.response.json();\r",
+									"const morbidities= Array.from(new Set(jsonData.map(morbidity => morbidity.morbidityTestName)));\r",
+									"pm.variables.set(\"morbidityNames\",morbidities);\r",
+									"\r",
+									"pm.test(\"Response is a JSON array\", () => {\r",
+									"    pm.response.to.be.json;\r",
+									"    pm.expect(jsonData).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"commonTests.validGetPutRequest();\r",
+									"commonTests.morbidityGetRequest();\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dieticianToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve morbidity condition by test name  with invalid URL - Dietician",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.notFoundRequest();\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dieticianToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{invalidURL}}/morbidity/{{validTestName}}",
+							"host": [
+								"{{invalidURL}}"
+							],
+							"path": [
+								"morbidity",
+								"{{validTestName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve morbidity condition by test name without authorization - Dietician",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.unauthorizedRequest();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity/{{validTestName}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity",
+								"{{validTestName}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve morbidity condition by invalid test name - Dietician",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"commonTests.notFoundRequest();\r",
+									"\r",
+									"const jsonData= pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response body contains error details\", () => {\r",
+									" pm.expect(jsonData).to.have.property('errorCode', 'NOT_FOUND');\r",
+									" pm.expect(jsonData).to.have.property('errorMessage', 'Morbidity not found with MorbidityTestName : TSH ULTRASENSITIVE');\r",
+									"\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dieticianToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity/{{invalidTestName}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity",
+								"{{invalidTestName}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve morbidity condition by test name - Dietician",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const morbidityNames= pm.variables.get(\"morbidityNames\");\r",
+									"pm.variables.set(\"testName\",morbidityNames.shift());\r",
+									"\r",
+									"if (Array.isArray(morbidityNames) && morbidityNames.length >0) {\r",
+									"    \r",
+									"    pm.execution.setNextRequest(\"Retrieve morbidity condition by test name - Dietician\");\r",
+									"} else {\r",
+									"     pm.execution.setNextRequest(\"Retrieve all morbidities - Patient\"); //\"Retrieve All Morbidities by Dietician\"\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData= pm.response.json();\r",
+									"\r",
+									"pm.test(\"Response is a JSON array\", () => {\r",
+									"    pm.response.to.be.json;\r",
+									"    pm.expect(jsonData).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"commonTests.validGetPutRequest();\r",
+									"commonTests.morbidityGetRequest();\r",
+									"\r",
+									"pm.test(\"Response data matches the test name\", function () {\r",
+									"    jsonData.forEach(morbidity => {\r",
+									"        pm.expect(morbidity.morbidityTestName).to.eql(pm.variables.get('testName'));\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{dieticianToken_Collec}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/morbidity/{{testName}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"morbidity",
+								"{{testName}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Retrieve all morbidities - Patient",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"const jasonData= pm.response.json();\r",
-							"const morbidities= Array.from(new Set(jasonData.map(morbidity => morbidity.morbidityTestName)));\r",
-							"//const uniqueSet = new Set(morbidities);\r",
-							"pm.variables.set(\"morbidityNames\",morbidities);"
+							"pm.test(\"Status code is 403\", () => {\r",
+							"  pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", () => {\r",
+							"    pm.response.to.have.status(\"Forbidden\");\r",
+							"});\r",
+							"\r",
+							"const jsonData= pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response body contains error details\", () => {\r",
+							" pm.expect(jsonData).to.have.property('errorCode', '403');\r",
+							" pm.expect(jsonData).to.have.property('errorMessage', 'Access is denied');\r",
+							"\r",
+							"});"
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -630,7 +1086,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{adminToken_Collec}}",
+							"value": "{{patientToken_Collec}}",
 							"type": "string"
 						}
 					]
@@ -750,245 +1206,7 @@
 			]
 		},
 		{
-			"name": "Retrieve Morbidity Condition by Test Name - Admin",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"const morbidityNames= pm.variables.get(\"morbidityNames\");\r",
-							"pm.variables.set(\"testName\",morbidityNames.shift());\r",
-							"\r",
-							"if (Array.isArray(morbidityNames) && morbidityNames.length >0) {\r",
-							"    \r",
-							"    pm.execution.setNextRequest(\"Retrieve Morbidity Condition by Test Name - Admin\");\r",
-							"} else {\r",
-							"     pm.execution.setNextRequest(\"Retrieve All Morbidities by Dietician\");\r",
-							"}"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{adminToken_Collec}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{baseURL}}/morbidity/{{testName}}",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"morbidity",
-						"{{testName}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Retrieve All Morbidities by Dietician",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"const jasonData= pm.response.json();\r",
-							"const morbidities= Array.from(new Set(jasonData.map(morbidity => morbidity.morbidityTestName)));\r",
-							"//const uniqueSet = new Set(morbidities);\r",
-							"pm.variables.set(\"morbidityNames\",morbidities);"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{dieticianToken_Collec}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{baseURL}}/morbidity",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"morbidity"
-					]
-				}
-			},
-			"response": [
-				{
-					"name": "Retrieve All Morbidities",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/morbidity",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"morbidity"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Server",
-							"value": "Cowboy"
-						},
-						{
-							"key": "Report-To",
-							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722507550&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=sUqX55YdaGb%2F4QS2j34K5mwHHT5lJ5tJUffDsnlRT1Y%3D\"}]}"
-						},
-						{
-							"key": "Reporting-Endpoints",
-							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722507550&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=sUqX55YdaGb%2F4QS2j34K5mwHHT5lJ5tJUffDsnlRT1Y%3D"
-						},
-						{
-							"key": "Nel",
-							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
-						},
-						{
-							"key": "Connection",
-							"value": "keep-alive"
-						},
-						{
-							"key": "Vary",
-							"value": "Origin"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Method"
-						},
-						{
-							"key": "Vary",
-							"value": "Access-Control-Request-Headers"
-						},
-						{
-							"key": "X-Content-Type-Options",
-							"value": "nosniff"
-						},
-						{
-							"key": "X-Xss-Protection",
-							"value": "1; mode=block"
-						},
-						{
-							"key": "Cache-Control",
-							"value": "no-cache, no-store, max-age=0, must-revalidate"
-						},
-						{
-							"key": "Pragma",
-							"value": "no-cache"
-						},
-						{
-							"key": "Expires",
-							"value": "0"
-						},
-						{
-							"key": "Strict-Transport-Security",
-							"value": "max-age=31536000 ; includeSubDomains"
-						},
-						{
-							"key": "X-Frame-Options",
-							"value": "DENY"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						},
-						{
-							"key": "Transfer-Encoding",
-							"value": "chunked"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 01 Aug 2024 10:19:10 GMT"
-						},
-						{
-							"key": "Via",
-							"value": "1.1 vegur"
-						}
-					],
-					"cookie": [],
-					"body": "[\n    {\n        \"morbidityId\": 1,\n        \"morbidityTestId\": \"DIA_FG\",\n        \"morbidityNameRegex\": \"(?i)(.*)fasting(.*)[sugarglucose](.*)|(.*)glucose(.*)fasting(.*)\",\n        \"morbidityTestName\": \"Fasting Glucose\",\n        \"morbidityTestUnit\": \"mg/dL\",\n        \"morbidityMarkerMinVal\": 125,\n        \"morbidityMarkerMaxVal\": 100\n    },\n    {\n        \"morbidityId\": 2,\n        \"morbidityTestId\": \"DIA_AG\",\n        \"morbidityNameRegex\": \"(?i)(.*)average(.*)glucose(.*)\",\n        \"morbidityTestName\": \"Average Glucose\",\n        \"morbidityTestUnit\": \"mg/dL\",\n        \"morbidityMarkerMinVal\": 121,\n        \"morbidityMarkerMaxVal\": 150\n    },\n    {\n        \"morbidityId\": 3,\n        \"morbidityTestId\": \"DIA_PG\",\n        \"morbidityNameRegex\": \"(?i)(.*)plasma(.*)glucose(.*)\",\n        \"morbidityTestName\": \"Plasma Glucose\",\n        \"morbidityTestUnit\": \"mg/dL\",\n        \"morbidityMarkerMinVal\": 140,\n        \"morbidityMarkerMaxVal\": 199\n    },\n    {\n        \"morbidityId\": 4,\n        \"morbidityTestId\": \"DIA_HBA1C\",\n        \"morbidityNameRegex\": \"(.*)HbA[1I]c(.*)|(.*)H(.*)P(.*)L(.*)C(.*)\",\n        \"morbidityTestName\": \"HbA1c\",\n        \"morbidityTestUnit\": \"%\",\n        \"morbidityMarkerMinVal\": 5.7,\n        \"morbidityMarkerMaxVal\": 6.5\n    },\n    {\n        \"morbidityId\": 5,\n        \"morbidityTestId\": \"THYRO_TSH\",\n        \"morbidityNameRegex\": \"(?i)(.*)T(.*)S(.*)H(.*)|(.*)THYROID STIMULATING HORMONE(.*)\",\n        \"morbidityTestName\": \"TSH\",\n        \"morbidityTestUnit\": \"μIU/ml\",\n        \"morbidityMarkerMinVal\": 0.55,\n        \"morbidityMarkerMaxVal\": 4.78\n    },\n    {\n        \"morbidityId\": 6,\n        \"morbidityTestId\": \"THYRO_TSH_1\",\n        \"morbidityNameRegex\": \"(?i)(.*)T(.*)S(.*)H(.*)|(.*)THYROID STIMULATING HORMONE(.*)\",\n        \"morbidityTestName\": \"TSH\",\n        \"morbidityTestUnit\": \"uIU/ml\",\n        \"morbidityMarkerMinVal\": 0.55,\n        \"morbidityMarkerMaxVal\": 4.78\n    },\n    {\n        \"morbidityId\": 7,\n        \"morbidityTestId\": \"THYRO_T3\",\n        \"morbidityNameRegex\": \"(?i)(.*)T3(.*)\",\n        \"morbidityTestName\": \"T3\",\n        \"morbidityTestUnit\": \"ng/dL\",\n        \"morbidityMarkerMinVal\": 60,\n        \"morbidityMarkerMaxVal\": 180\n    },\n    {\n        \"morbidityId\": 8,\n        \"morbidityTestId\": \"THYRO_T3_1\",\n        \"morbidityNameRegex\": \"(?i)(.*)T3(.*)\",\n        \"morbidityTestName\": \"T3\",\n        \"morbidityTestUnit\": \"ng/mL\",\n        \"morbidityMarkerMinVal\": 0.6,\n        \"morbidityMarkerMaxVal\": 1.8\n    },\n    {\n        \"morbidityId\": 9,\n        \"morbidityTestId\": \"THYRO_T3_2\",\n        \"morbidityNameRegex\": \"(?i)(.*)T3(.*)\",\n        \"morbidityTestName\": \"T3\",\n        \"morbidityTestUnit\": \"pg/mL\",\n        \"morbidityMarkerMinVal\": 1.5,\n        \"morbidityMarkerMaxVal\": 4.1\n    },\n    {\n        \"morbidityId\": 10,\n        \"morbidityTestId\": \"THYRO_T3_3\",\n        \"morbidityNameRegex\": \"(?i)(.*)T3(.*)\",\n        \"morbidityTestName\": \"T3\",\n        \"morbidityTestUnit\": \"nmol/L\",\n        \"morbidityMarkerMinVal\": 0.9,\n        \"morbidityMarkerMaxVal\": 2.76\n    },\n    {\n        \"morbidityId\": 11,\n        \"morbidityTestId\": \"THYRO_T4\",\n        \"morbidityNameRegex\": \"(?i)(.*)T4(.*)\",\n        \"morbidityTestName\": \"T4\",\n        \"morbidityTestUnit\": \"μg/dL\",\n        \"morbidityMarkerMinVal\": 5,\n        \"morbidityMarkerMaxVal\": 12\n    },\n    {\n        \"morbidityId\": 12,\n        \"morbidityTestId\": \"THYRO_T4_1\",\n        \"morbidityNameRegex\": \"(?i)(.*)T4(.*)\",\n        \"morbidityTestName\": \"T4\",\n        \"morbidityTestUnit\": \"ug/dL\",\n        \"morbidityMarkerMinVal\": 5,\n        \"morbidityMarkerMaxVal\": 12\n    },\n    {\n        \"morbidityId\": 13,\n        \"morbidityTestId\": \"THYRO_T4_2\",\n        \"morbidityNameRegex\": \"(?i)(.*)T4(.*)\",\n        \"morbidityTestName\": \"T4\",\n        \"morbidityTestUnit\": \"ng/dL\",\n        \"morbidityMarkerMinVal\": 0.8,\n        \"morbidityMarkerMaxVal\": 1.9\n    },\n    {\n        \"morbidityId\": 14,\n        \"morbidityTestId\": \"BP_LEVEL\",\n        \"morbidityNameRegex\": \"(?i)(.*)Blood(.*)Pressure(.*)\",\n        \"morbidityTestName\": \"Blood Pressure Levels\",\n        \"morbidityTestUnit\": \"mm Hg\",\n        \"morbidityMarkerMinVal\": 80,\n        \"morbidityMarkerMaxVal\": 130\n    },\n    {\n        \"morbidityId\": 15,\n        \"morbidityTestId\": \"THYRO_TSH_2\",\n        \"morbidityNameRegex\": \"(?i)(.*)T(.*)S(.*)H(.*)|(.*)THYROID STIMULATING HORMONE(.*)\",\n        \"morbidityTestName\": \"TSH\",\n        \"morbidityTestUnit\": \"mIU/L\",\n        \"morbidityMarkerMinVal\": 0.45,\n        \"morbidityMarkerMaxVal\": 4.12\n    }\n]"
-				}
-			]
-		},
-		{
-			"name": "Retrieve Morbidity Condition by Test Name - Dietician",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							"const morbidityNames= pm.variables.get(\"morbidityNames\");\r",
-							"pm.variables.set(\"testName\",morbidityNames.shift());\r",
-							"\r",
-							"if (Array.isArray(morbidityNames) && morbidityNames.length >0) {\r",
-							"    \r",
-							"    pm.execution.setNextRequest(\"Retrieve Morbidity Condition by Test Name - Dietician\");\r",
-							"} else {\r",
-							"     pm.execution.setNextRequest(null);\r",
-							"}"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "{{dieticianToken_Collec}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{baseURL}}/morbidity/{{testName}}",
-					"host": [
-						"{{baseURL}}"
-					],
-					"path": [
-						"morbidity",
-						"{{testName}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Retrieve Morbidity Condition by Test Name - Dietician Copy",
+			"name": "Retrieve morbidity condition by test name - Patient",
 			"event": [
 				{
 					"listen": "prerequest",
@@ -999,6 +1217,30 @@
 						"type": "text/javascript",
 						"packages": {}
 					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 403\", () => {\r",
+							"  pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code name has string\", () => {\r",
+							"    pm.response.to.have.status(\"Forbidden\");\r",
+							"});\r",
+							"\r",
+							"const jsonData= pm.response.json();\r",
+							"\r",
+							"pm.test(\"Response body contains error details\", () => {\r",
+							" pm.expect(jsonData).to.have.property('errorCode', '403');\r",
+							" pm.expect(jsonData).to.have.property('errorMessage', 'Access is denied');\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
 				}
 			],
 			"request": {
@@ -1007,7 +1249,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{dieticianToken_Collec}}",
+							"value": "{{patientToken_Collec}}",
 							"type": "string"
 						}
 					]
@@ -1015,13 +1257,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{baseURL}}/morbidity/null",
+					"raw": "{{baseURL}}/morbidity/TSH",
 					"host": [
 						"{{baseURL}}"
 					],
 					"path": [
 						"morbidity",
-						"null"
+						"TSH"
 					]
 				}
 			},
@@ -1045,7 +1287,80 @@
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
-					""
+					"commonTests = {\r",
+					"    validGetPutRequest: function () {\r",
+					"        //Status code\r",
+					"        pm.test(\"Status code is 200\", () => {\r",
+					"            pm.response.to.have.status(200);\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Status code name has string\", () => {\r",
+					"            pm.response.to.have.status(\"OK\");\r",
+					"        });\r",
+					"\r",
+					"        //Header \r",
+					"        pm.test(\"Content-Type is present\", () => {\r",
+					"            pm.response.to.have.header(\"Content-Type\");\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Content-Type header is application/json\", () => {\r",
+					"            pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql('application/json');\r",
+					"        });\r",
+					"\r",
+					"        //Response time\r",
+					"        pm.test(\"Response time is less than 1000ms\", () => {\r",
+					"            pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+					"        });\r",
+					"    },\r",
+					"    unauthorizedRequest: function () {\r",
+					"        //Unauthorized\r",
+					"        pm.test(\"Status code is 401\", () => {\r",
+					"            pm.response.to.have.status(401);\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Status code name has string\", () => {\r",
+					"            pm.response.to.have.status(\"Unauthorized\");\r",
+					"        });\r",
+					"    },\r",
+					"    notFoundRequest: function () {\r",
+					"        //Invalid URL \r",
+					"        pm.test(\"Status code is 404\", () => {\r",
+					"            pm.response.to.have.status(404);\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Status code name has string\", () => {\r",
+					"            pm.response.to.have.status(\"Not Found\");\r",
+					"        });\r",
+					"    },\r",
+					"    morbidityGetRequest: function () {\r",
+					"        const jsonData= pm.response.json();\r",
+					"        pm.test(\"Each morbidity has required fields\", () => {\r",
+					"            //const morbidities = pm.response.json();\r",
+					"            jsonData.forEach(morbidity => {\r",
+					"                pm.expect(morbidity).to.have.property('morbidityId');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityTestId');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityNameRegex');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityTestName');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityTestUnit');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityMarkerMinVal');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityMarkerMaxVal');\r",
+					"            });\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Test data type of the response\", () => {\r",
+					"            jsonData.forEach(morbidity => {\r",
+					"                pm.expect(morbidity).to.be.an('object');\r",
+					"                pm.expect(morbidity.morbidityId).to.be.a('number');\r",
+					"                pm.expect(morbidity.morbidityTestId).to.be.a('string');\r",
+					"                pm.expect(morbidity.morbidityNameRegex).to.be.a('string');\r",
+					"                pm.expect(morbidity.morbidityTestName).to.be.a('string');\r",
+					"                pm.expect(morbidity.morbidityTestUnit).to.be.a('string');\r",
+					"                pm.expect(morbidity.morbidityMarkerMinVal).to.be.a('number');\r",
+					"                pm.expect(morbidity.morbidityMarkerMaxVal).to.be.a('number');\r",
+					"            });\r",
+					"        });\r",
+					"    }\r",
+					"}"
 				]
 			}
 		}
@@ -1062,9 +1377,22 @@
 			"type": "string"
 		},
 		{
-			"key": "testName",
-			"value": "TSH",
-			"disabled": true
+			"key": "validTestName",
+			"value": "TSH"
+		},
+		{
+			"key": "patientToken_Collec",
+			"value": ""
+		},
+		{
+			"key": "invalidURL",
+			"value": "https://dietician-july-api--80f2590665cc.herokuapp.com/dietician",
+			"type": "string"
+		},
+		{
+			"key": "invalidTestName",
+			"value": "TSH ULTRASENSITIVE",
+			"type": "string"
 		}
 	]
 }
