@@ -1,0 +1,1427 @@
+{
+	"info": {
+		"_postman_id": "776bbe03-815a-45d3-96f4-c302b09c7125",
+		"name": "patient_module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28020028",
+		"_collection_link": "https://team12-api-hackathon.postman.co/workspace/Team12_SmartDiet-APIs_Postman-H~642872c2-9787-4e43-8117-f254f6d07eba/collection/28020028-776bbe03-815a-45d3-96f4-c302b09c7125?action=share&source=collection_link&creator=28020028"
+	},
+	"item": [
+		{
+			"name": "create admin login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"adminToken\",jsonData.token);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSZWluYV9SdWVja2VyOTdAeWFob28uY29tIiwiaWF0IjoxNzIyNDU5OTM1LCJleHAiOjE3MjI0ODg3MzV9.CwkEh3-Q7SGg3owo6ZlApiq...",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"test\",\r\n  \"userLoginEmail\": \"Team12@gmail.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
+					"protocol": "https",
+					"host": [
+						"dietician-july-api-hackathon-80f2590665cc",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dietician",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create dietician login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							" var jsonData = pm.response.json();\r",
+							" pm.environment.set(\"dietToken\",jsonData.token);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJSZWluYV9SdWVja2VyOTdAeWFob28uY29tIiwiaWF0IjoxNzIyNDU5OTM1LCJleHAiOjE3MjI0ODg3MzV9.CwkEh3-Q7SGg3owo6ZlApiq...",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"Funny09\",\r\n  \"userLoginEmail\": \"Reina_Ruecker97@yahoo.com\"\r\n}\r\n\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
+					"protocol": "https",
+					"host": [
+						"dietician-july-api-hackathon-80f2590665cc",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dietician",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Patient",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{dietToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "patientInfo",
+							"value": "{ \"FirstName\": \"mall\",\n\"LastName\": \"mall\",\n\"ContactNumber\": \"9968345983\",\n\"Email\": \"smart@gmail.com\",\n\"Allergy\": \"soy\",\n\"FoodPreference\": \"jain\",\n\"CuisineCategory\":\"indian\",\n\"DateOfBirth\": \"1986-02-24\"\n}",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+						},
+						{
+							"key": "PtInfo",
+							"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanut\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient",
+					"protocol": "https",
+					"host": [
+						"dietician-july-api-hackathon-80f2590665cc",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dietician",
+						"patient"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "New Request L",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "patientInfo",
+									"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345983\",\n\"Email\": \"smartdiet@gmail.com\",\n\"Allergy\": \"soy\",\n\"FoodPreference\": \"jain\",\n\"CuisineCategory\":\"indian\",\n\"DateOfBirth\": \"1986-02-14\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"patient"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722460648&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=7lDaY9ld6NskRFkFKPQXQoWPgxqbgHVpV4uFMUWegdY%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722460648&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=7lDaY9ld6NskRFkFKPQXQoWPgxqbgHVpV4uFMUWegdY%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 31 Jul 2024 21:17:29 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"patientId\": 33,\n    \"FirstName\": \"malli\",\n    \"LastName\": \"malli\",\n    \"ContactNumber\": \"9867345983\",\n    \"Email\": \"smartdiet@gmail.com\",\n    \"Allergy\": \"soy\",\n    \"FoodPreference\": \"jain\",\n    \"CuisineCategory\": \"indian\",\n    \"FileMorbidity\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66aaa9e9e6f5802145ab051c\": \"Prediabetic \\nBlood Pressure: Hypotension \\n\"\n    },\n    \"DateOfBirth\": \"1986-02-14\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-07-31T21:17:29.088+00:00\"\n}"
+				},
+				{
+					"name": "Create Patient",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "patientInfo",
+									"value": "{ \"FirstName\": \"mall\",\n\"LastName\": \"mall\",\n\"ContactNumber\": \"9968345983\",\n\"Email\": \"smart@gmail.com\",\n\"Allergy\": \"soy\",\n\"FoodPreference\": \"jain\",\n\"CuisineCategory\":\"indian\",\n\"DateOfBirth\": \"1986-02-24\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+								},
+								{
+									"key": "PtInfo",
+									"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanut\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient",
+							"protocol": "https",
+							"host": [
+								"dietician-july-api-hackathon-80f2590665cc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"dietician",
+								"patient"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722612549&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=tc3vfZY%2FW9ZO0V4eF0eTYI1CIyOWjq1%2BrZ9ilkaqm3o%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722612549&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=tc3vfZY%2FW9ZO0V4eF0eTYI1CIyOWjq1%2BrZ9ilkaqm3o%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Aug 2024 15:29:09 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"patientId\": 348,\n    \"FirstName\": \"mall\",\n    \"LastName\": \"mall\",\n    \"ContactNumber\": \"9968345983\",\n    \"Email\": \"smart@gmail.com\",\n    \"Allergy\": \"soy\",\n    \"FoodPreference\": \"jain\",\n    \"CuisineCategory\": \"indian\",\n    \"FileMorbidity\": {\n        \"66acfb454717cf471aaad07c\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66acfb454717cf471aaad07c\": \"Prediabetic \\nBlood Pressure: Hypotension \\n\"\n    },\n    \"DateOfBirth\": \"1986-02-24\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66acfb454717cf471aaad07c\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-08-02T15:29:09.780+00:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "update patient by Id",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"dietToken\")\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{dietToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "patientInfo",
+							"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345989\",\n\"Email\": \"smartdiet1@gmail.com\",\n\"Allergy\": \"ALMOND\",\n\"FoodPreference\": \"Jain\",\n\"CuisineCategory\":\"rajasthani\",\n\"DateOfBirth\": \"1987-03-14\"\n}",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+						},
+						{
+							"key": "PtInfo",
+							"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanuts\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/patient/33\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"patient",
+						"33\n"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Patient 2 Copy",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "patientInfo",
+									"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345989\",\n\"Email\": \"smartdiet1@gmail.com\",\n\"Allergy\": \"ALMOND\",\n\"FoodPreference\": \"Jain\",\n\"CuisineCategory\":\"rajasthani\",\n\"DateOfBirth\": \"1987-03-14\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+								},
+								{
+									"key": "PtInfo",
+									"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanuts\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patient/33\n",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patient",
+								"33\n"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Aug 2024 20:04:08 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"patientId\": 33,\n    \"FirstName\": \"malli\",\n    \"LastName\": \"malli\",\n    \"ContactNumber\": \"9867345989\",\n    \"Email\": \"smartdiet1@gmail.com\",\n    \"Allergy\": \"ALMOND\",\n    \"FoodPreference\": \"Jain\",\n    \"CuisineCategory\": \"rajasthani\",\n    \"FileMorbidity\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2d234717cf471aaad0b7\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad35584717cf471aaad0bd\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad39404717cf471aaad0cb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2a684717cf471aaad0b1\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2fce4717cf471aaad0bb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad37b74717cf471aaad0c3\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad3bb84717cf471aaad0cf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad36ce4717cf471aaad0bf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66aaa9e9e6f5802145ab051c\": \"Prediabetic \\nBlood Pressure: Hypotension \\n\",\n        \"66ad2d234717cf471aaad0b7\": \"Prediabetic \\n\",\n        \"66ad35584717cf471aaad0bd\": \"Prediabetic \\n\",\n        \"66ad39404717cf471aaad0cb\": \"Prediabetic \\n\",\n        \"66ad2a684717cf471aaad0b1\": \"Prediabetic \\n\",\n        \"66ad2fce4717cf471aaad0bb\": \"Prediabetic \\n\",\n        \"66ad37b74717cf471aaad0c3\": \"Prediabetic \\n\",\n        \"66ad3bb84717cf471aaad0cf\": \"Prediabetic \\n\",\n        \"66ad36ce4717cf471aaad0bf\": \"Prediabetic \\n\"\n    },\n    \"DateOfBirth\": \"1987-03-14\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-07-31T21:17:29.088+00:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "update patient add new report",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"dietToken\")\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{dietToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "patientInfo",
+							"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345989\",\n\"Email\": \"smartdiet1@gmail.com\",\n\"Allergy\": \"ALMOND\",\n\"FoodPreference\": \"Jain\",\n\"CuisineCategory\":\"rajasthani\",\n\"DateOfBirth\": \"1987-03-14\"\n}",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/admin/Downloads/WhatsApp Image 2024-08-02 at 12.24.04 PM.jpeg"
+						},
+						{
+							"key": "PtInfo",
+							"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanuts\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/patient/newReports/33\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"patient",
+						"newReports",
+						"33\n"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Patient 2 Copy",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "patientInfo",
+									"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345989\",\n\"Email\": \"smartdiet1@gmail.com\",\n\"Allergy\": \"ALMOND\",\n\"FoodPreference\": \"Jain\",\n\"CuisineCategory\":\"rajasthani\",\n\"DateOfBirth\": \"1987-03-14\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+								},
+								{
+									"key": "PtInfo",
+									"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanuts\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patient/33\n",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patient",
+								"33\n"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Aug 2024 20:04:08 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"patientId\": 33,\n    \"FirstName\": \"malli\",\n    \"LastName\": \"malli\",\n    \"ContactNumber\": \"9867345989\",\n    \"Email\": \"smartdiet1@gmail.com\",\n    \"Allergy\": \"ALMOND\",\n    \"FoodPreference\": \"Jain\",\n    \"CuisineCategory\": \"rajasthani\",\n    \"FileMorbidity\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2d234717cf471aaad0b7\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad35584717cf471aaad0bd\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad39404717cf471aaad0cb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2a684717cf471aaad0b1\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2fce4717cf471aaad0bb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad37b74717cf471aaad0c3\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad3bb84717cf471aaad0cf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad36ce4717cf471aaad0bf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66aaa9e9e6f5802145ab051c\": \"Prediabetic \\nBlood Pressure: Hypotension \\n\",\n        \"66ad2d234717cf471aaad0b7\": \"Prediabetic \\n\",\n        \"66ad35584717cf471aaad0bd\": \"Prediabetic \\n\",\n        \"66ad39404717cf471aaad0cb\": \"Prediabetic \\n\",\n        \"66ad2a684717cf471aaad0b1\": \"Prediabetic \\n\",\n        \"66ad2fce4717cf471aaad0bb\": \"Prediabetic \\n\",\n        \"66ad37b74717cf471aaad0c3\": \"Prediabetic \\n\",\n        \"66ad3bb84717cf471aaad0cf\": \"Prediabetic \\n\",\n        \"66ad36ce4717cf471aaad0bf\": \"Prediabetic \\n\"\n    },\n    \"DateOfBirth\": \"1987-03-14\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-07-31T21:17:29.088+00:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "get patient morbidity details",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"dietToken\")\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{dietToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "patientInfo",
+							"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345989\",\n\"Email\": \"smartdiet1@gmail.com\",\n\"Allergy\": \"ALMOND\",\n\"FoodPreference\": \"Jain\",\n\"CuisineCategory\":\"rajasthani\",\n\"DateOfBirth\": \"1987-03-14\"\n}",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+						},
+						{
+							"key": "PtInfo",
+							"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanuts\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/patient/testReports/33\n\n\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"patient",
+						"testReports",
+						"33\n\n\n"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Patient 2 Copy",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "patientInfo",
+									"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345989\",\n\"Email\": \"smartdiet1@gmail.com\",\n\"Allergy\": \"ALMOND\",\n\"FoodPreference\": \"Jain\",\n\"CuisineCategory\":\"rajasthani\",\n\"DateOfBirth\": \"1987-03-14\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+								},
+								{
+									"key": "PtInfo",
+									"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanuts\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patient/33\n",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patient",
+								"33\n"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Aug 2024 20:04:08 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"patientId\": 33,\n    \"FirstName\": \"malli\",\n    \"LastName\": \"malli\",\n    \"ContactNumber\": \"9867345989\",\n    \"Email\": \"smartdiet1@gmail.com\",\n    \"Allergy\": \"ALMOND\",\n    \"FoodPreference\": \"Jain\",\n    \"CuisineCategory\": \"rajasthani\",\n    \"FileMorbidity\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2d234717cf471aaad0b7\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad35584717cf471aaad0bd\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad39404717cf471aaad0cb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2a684717cf471aaad0b1\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2fce4717cf471aaad0bb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad37b74717cf471aaad0c3\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad3bb84717cf471aaad0cf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad36ce4717cf471aaad0bf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66aaa9e9e6f5802145ab051c\": \"Prediabetic \\nBlood Pressure: Hypotension \\n\",\n        \"66ad2d234717cf471aaad0b7\": \"Prediabetic \\n\",\n        \"66ad35584717cf471aaad0bd\": \"Prediabetic \\n\",\n        \"66ad39404717cf471aaad0cb\": \"Prediabetic \\n\",\n        \"66ad2a684717cf471aaad0b1\": \"Prediabetic \\n\",\n        \"66ad2fce4717cf471aaad0bb\": \"Prediabetic \\n\",\n        \"66ad37b74717cf471aaad0c3\": \"Prediabetic \\n\",\n        \"66ad3bb84717cf471aaad0cf\": \"Prediabetic \\n\",\n        \"66ad36ce4717cf471aaad0bf\": \"Prediabetic \\n\"\n    },\n    \"DateOfBirth\": \"1987-03-14\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-07-31T21:17:29.088+00:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all Patients",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"dietToken\")\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{dietToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient\n\n",
+					"protocol": "https",
+					"host": [
+						"dietician-july-api-hackathon-80f2590665cc",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dietician",
+						"patient\n\n"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Patient 2 Copy",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "patientInfo",
+									"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345989\",\n\"Email\": \"smartdiet1@gmail.com\",\n\"Allergy\": \"ALMOND\",\n\"FoodPreference\": \"Jain\",\n\"CuisineCategory\":\"rajasthani\",\n\"DateOfBirth\": \"1987-03-14\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+								},
+								{
+									"key": "PtInfo",
+									"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanuts\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patient/33\n",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patient",
+								"33\n"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Aug 2024 20:04:08 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"patientId\": 33,\n    \"FirstName\": \"malli\",\n    \"LastName\": \"malli\",\n    \"ContactNumber\": \"9867345989\",\n    \"Email\": \"smartdiet1@gmail.com\",\n    \"Allergy\": \"ALMOND\",\n    \"FoodPreference\": \"Jain\",\n    \"CuisineCategory\": \"rajasthani\",\n    \"FileMorbidity\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2d234717cf471aaad0b7\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad35584717cf471aaad0bd\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad39404717cf471aaad0cb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2a684717cf471aaad0b1\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2fce4717cf471aaad0bb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad37b74717cf471aaad0c3\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad3bb84717cf471aaad0cf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad36ce4717cf471aaad0bf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66aaa9e9e6f5802145ab051c\": \"Prediabetic \\nBlood Pressure: Hypotension \\n\",\n        \"66ad2d234717cf471aaad0b7\": \"Prediabetic \\n\",\n        \"66ad35584717cf471aaad0bd\": \"Prediabetic \\n\",\n        \"66ad39404717cf471aaad0cb\": \"Prediabetic \\n\",\n        \"66ad2a684717cf471aaad0b1\": \"Prediabetic \\n\",\n        \"66ad2fce4717cf471aaad0bb\": \"Prediabetic \\n\",\n        \"66ad37b74717cf471aaad0c3\": \"Prediabetic \\n\",\n        \"66ad3bb84717cf471aaad0cf\": \"Prediabetic \\n\",\n        \"66ad36ce4717cf471aaad0bf\": \"Prediabetic \\n\"\n    },\n    \"DateOfBirth\": \"1987-03-14\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-07-31T21:17:29.088+00:00\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all Patients with invalid endpoints",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.get(\"dietToken\")\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{dietToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/patient\n\n",
+					"protocol": "https",
+					"host": [
+						"dietician-july-api-hackathon-80f2590665cc",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dietician",
+						"patient\n\n"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Patient 2 Copy",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "patientInfo",
+									"value": "{ \"FirstName\": \"malli\",\n\"LastName\": \"malli\",\n\"ContactNumber\": \"9867345989\",\n\"Email\": \"smartdiet1@gmail.com\",\n\"Allergy\": \"ALMOND\",\n\"FoodPreference\": \"Jain\",\n\"CuisineCategory\":\"rajasthani\",\n\"DateOfBirth\": \"1987-03-14\"\n}",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef4f81e-6866-4e80-b96a-b1a87c11c05d"
+								},
+								{
+									"key": "PtInfo",
+									"value": " { \"FirstName\": \"Ram\",\n\"LastName\": \"Setu\",\n\"ContactNumber\": \"9009089789\",\n\"Email\": \"ram@gmail.com\",\n\"Allergy\": \"Peanuts\",\n\"FoodPreference\": \"NonVeg\",\n\"CuisineCategory\":\"sindhi\",\n\"DateOfBirth\": \"1987-02-14\"\n}\n",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef50041-b0cf-4520-834f-a4054daded29",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/patient/33\n",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"patient",
+								"33\n"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D\"}]}"
+						},
+						{
+							"key": "Reporting-Endpoints",
+							"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722629047&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=8RqX%2BqL%2FJeVJs2s0urHTHFh9ACsKsy25ugRJpKoNrGQ%3D"
+						},
+						{
+							"key": "Nel",
+							"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Xss-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000 ; includeSubDomains"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 02 Aug 2024 20:04:08 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"patientId\": 33,\n    \"FirstName\": \"malli\",\n    \"LastName\": \"malli\",\n    \"ContactNumber\": \"9867345989\",\n    \"Email\": \"smartdiet1@gmail.com\",\n    \"Allergy\": \"ALMOND\",\n    \"FoodPreference\": \"Jain\",\n    \"CuisineCategory\": \"rajasthani\",\n    \"FileMorbidity\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2d234717cf471aaad0b7\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad35584717cf471aaad0bd\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad39404717cf471aaad0cb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2a684717cf471aaad0b1\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad2fce4717cf471aaad0bb\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad37b74717cf471aaad0c3\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad3bb84717cf471aaad0cf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        },\n        \"66ad36ce4717cf471aaad0bf\": {\n            \"HbA1c\": \"6.5 %\",\n            \"Average Glucose\": \"131.0 mg/dl\"\n        }\n    },\n    \"FileMorbidityCondition\": {\n        \"66aaa9e9e6f5802145ab051c\": \"Prediabetic \\nBlood Pressure: Hypotension \\n\",\n        \"66ad2d234717cf471aaad0b7\": \"Prediabetic \\n\",\n        \"66ad35584717cf471aaad0bd\": \"Prediabetic \\n\",\n        \"66ad39404717cf471aaad0cb\": \"Prediabetic \\n\",\n        \"66ad2a684717cf471aaad0b1\": \"Prediabetic \\n\",\n        \"66ad2fce4717cf471aaad0bb\": \"Prediabetic \\n\",\n        \"66ad37b74717cf471aaad0c3\": \"Prediabetic \\n\",\n        \"66ad3bb84717cf471aaad0cf\": \"Prediabetic \\n\",\n        \"66ad36ce4717cf471aaad0bf\": \"Prediabetic \\n\"\n    },\n    \"DateOfBirth\": \"1987-03-14\",\n    \"DieticianId\": 221,\n    \"Vitals\": {\n        \"66aaa9e9e6f5802145ab051c\": {\n            \"Weight\": 0,\n            \"Height\": 0,\n            \"Temperature\": 0,\n            \"SP\": 0,\n            \"DP\": 0\n        }\n    },\n    \"LastVisitDate\": \"2024-07-31T21:17:29.088+00:00\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician"
+		}
+	]
+}
