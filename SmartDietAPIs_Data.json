@@ -1,0 +1,117 @@
+[
+    {
+        "requests": [
+            {
+                "name": "Update Dietician by ID with valid inputs",		
+                "data": [
+                    {
+                        "ContactNumber": "1234567890",
+                        "DateOfBirth": "1988-07-27T18:14:08.570Z",
+			"Education": "B.Sc",
+			"Email": "team12dietician11@gmail.com",
+  			"Firstname": "Laurel",
+  			"HospitalCity": "Test City11",
+  			"HospitalName": "11 St Louis Martin",
+  			"HospitalPincode": "111111",
+ 			"HospitalStreet": "Update Test Street1",
+  			"Lastname": "Pattersons"
+                    },
+                   {
+                        "ContactNumber": "9876543210",
+                        "DateOfBirth": "1993-07-27T15:14:08.570Z",
+			"Education": "M.Sc",
+			"Email": "team12dietician12@gmail.com",
+  			"Firstname": "Larry",
+  			"HospitalCity": "Test City12",
+  			"HospitalName": "12 St Louis Martin",
+  			"HospitalPincode": "121212",
+ 			"HospitalStreet": "Update Test Street12",
+  			"Lastname": "Jackson"
+                    },
+                    {
+                        "ContactNumber": "2234567891",
+                        "DateOfBirth": "1998-07-27T18:14:08.570Z",
+			"Education": "M.Sc test",
+			"Email": "team12dietician13@gmail.com",
+  			"Firstname": "Basil",
+  			"HospitalCity": "Test City13",
+  			"HospitalName": "13 St Louis Martin",
+  			"HospitalPincode": "131313",
+ 			"HospitalStreet": "Update Test Street13",
+  			"Lastname": "Joseph"
+                    }   
+                ]
+            },
+            {
+                "name": "Update Dietician by ID with invalid field inputs",
+                "data": [
+                    {
+                        "ContactNumber": "2234567@#",
+                        "DateOfBirth": "1998-07-27T18:14:08.570Z",
+			"Education": "M.Sc test",
+			"Email": "team12dietician13@gmail.com",
+  			"Firstname": "Basil",
+  			"HospitalCity": "Test City13",
+  			"HospitalName": "13 St Louis Martin",
+  			"HospitalPincode": "131313",
+ 			"HospitalStreet": "Update Test Street13",
+  			"Lastname": "Joseph",
+			"ErrorMessage": "Contact number should contain 10 digits"
+                    },
+                    {
+                        "ContactNumber": "2234567891",
+                        "DateOfBirth": "1998-07-27T18:14:08.570Z",
+			"Education": "M.Sc !@#$#$1234",
+			"Email": "team12die!@##$tician13@gmail.com",
+  			"Firstname": "Basil",
+  			"HospitalCity": "Test City13",
+  			"HospitalName": "13 St Louis Martin",
+  			"HospitalPincode": "131313",
+ 			"HospitalStreet": "Update Test Street13",
+  			"Lastname": "Joseph",
+			"ErrorMessage": "Invalid Email Id!"
+                    },
+                   {
+                        "ContactNumber": "2234567891",
+                        "DateOfBirth": "1998-07-27T18:14:08.570Z",
+			"Education": "M.Sc test",
+			"Email": "team12dietician13@gmail.com",
+  			"Firstname": "Basil12#$%^&*(",
+  			"HospitalCity": "Test City13!@##$%$%^&^&*(()",
+  			"HospitalName": "13 St Louis Martin",
+  			"HospitalPincode": "131313",
+ 			"HospitalStreet": "Update Test Street13",
+  			"Lastname": "Joseph",
+			"ErrorMessage": "FirstName should only contain Alphabets"
+                    },
+		    {
+                        "ContactNumber": "2234567891",
+                        "DateOfBirth": "1998-07-27T18:14:08.570Z",
+			"Education": "M.Sc test",
+			"Email": "team12dietician13@gmail.com",
+  			"Firstname": "Basil",
+  			"HospitalCity": "Test City13",
+  			"HospitalName": "13 St Louis Martin",
+  			"HospitalPincode": "131qw#$%%3",
+ 			"HospitalStreet": "!@##$#$%^,Update Test Street13",
+  			"Lastname": "Joseph",
+			"ErrorMessage": "Pincode should contain 6 digits"
+                    },
+		    {
+                        "ContactNumber": "2234567891",
+                        "DateOfBirth": "1998-07-27T18:14:08.570Z",
+			"Education": "M.Sc test",
+			"Email": "team12dietician13@gmail.com",
+  			"Firstname": "Basil",
+  			"HospitalCity": "Test City13",
+  			"HospitalName": "13 '!@##$%^%^&I*(@#@!#St Louis Martin",
+  			"HospitalPincode": "131313",
+ 			"HospitalStreet": "Update Test Street13",
+  			"Lastname": "Joseph!@#$ 5677",
+			"ErrorMessage": "LastName should only contain Alphabets"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,717 @@
+{
+	"info": {
+		"_postman_id": "4822958e-25e7-4de0-92da-bc55529bd71a",
+		"name": "Dietician_Module_Update",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33024937",
+		"_collection_link": "https://team12-api-hackathon.postman.co/workspace/642872c2-9787-4e43-8117-f254f6d07eba/collection/33024937-4822958e-25e7-4de0-92da-bc55529bd71a?action=share&source=collection_link&creator=33024937"
+	},
+	"item": [
+		{
+			"name": "Admin Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"adminToken_col\",jsonData.token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"test\",\r\n  \"userLoginEmail\": \"Team12@gmail.com\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dietician by ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adminToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/dietician/922",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"dietician",
+						"922"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dietician by ID with invalid URL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"commonTests.notFoundRequest();\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adminToken_col}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"9876543250\",\r\n  \"DateOfBirth\": \"1992-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"team12dietician02@gmail.com\",\r\n  \"Firstname\": \"Simmons\",\r\n  \"HospitalCity\": \"Test City\",\r\n  \"HospitalName\": \"St Louis\",\r\n  \"HospitalPincode\": \"123456\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"Miller\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dietician-july-api--80f2590665cc.herokuapp.com/dietician/dietician/{{dieticianID_collec}}",
+					"protocol": "https",
+					"host": [
+						"dietician-july-api--80f2590665cc",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dietician",
+						"dietician",
+						"{{dieticianID_collec}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dietician by ID without authorization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"commonTests.unauthorizedRequest();\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"9876543250\",\r\n  \"DateOfBirth\": \"1992-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"team12dietician02@gmail.com\",\r\n  \"Firstname\": \"Simmons\",\r\n  \"HospitalCity\": \"Test City\",\r\n  \"HospitalName\": \"St Louis\",\r\n  \"HospitalPincode\": \"123456\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"Miller\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/dietician/{{dieticianID_collec}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"dietician",
+						"{{dieticianID_collec}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dietician by ID with an existing contactNumber and DOB",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"commonTests.invalidInputsRequest();\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adminToken_col}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"1234567891\",\r\n  \"DateOfBirth\": \"1989-07-27\",\r\n  \"Education\": 123,\r\n  \"Email\": \"team12dietician03@gmail\",\r\n  \"Firstname\": \"Simmons\",\r\n  \"HospitalCity\": \"Test City\",\r\n  \"HospitalName\": \"St Louis\",\r\n  \"HospitalPincode\": \"123456\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"Miller\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/dietician/913",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"dietician",
+						"913"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dietician by ID with an invalid Email Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"commonTests.invalidInputsRequest();\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Error message for input\", () => {\r",
+							"pm.expect(jsonData.userLoginEmail).to.eql(\"Invalid Email Id!\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adminToken_col}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"1234567891\",\r\n  \"DateOfBirth\": \"1989-07-27\",\r\n  \"Education\": \"B.Sc\",\r\n  \"Email\": \"team12dietician04@gmail\",\r\n  \"Firstname\": \"Laura\",\r\n  \"HospitalCity\": \"Test City\",\r\n  \"HospitalName\": \"St Louis\",\r\n  \"HospitalPincode\": \"123456\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"Patterson\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/dietician/922",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"dietician",
+						"922"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dietician by ID with valid inputs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"commonTests.validGetPutRequest();\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"const responseDOB= new Date(jsonData.DateOfBirth).toISOString();\r",
+							"\r",
+							"pm.test(\"Check proper updation of input fields\", ()=> {\r",
+							"pm.expect(jsonData.ContactNumber).to.eql(pm.variables.get(\"ContactNumber\"));\r",
+							"pm.expect(responseDOB).to.eql(pm.variables.get(\"DateOfBirth\"));\r",
+							"pm.expect(jsonData.Education).to.eql(pm.variables.get(\"Education\"));\r",
+							"pm.expect(jsonData.Email).to.eql(pm.variables.get(\"Email\"));\r",
+							"pm.expect(jsonData.Firstname).to.eql(pm.variables.get(\"Firstname\"));\r",
+							"pm.expect(jsonData.HospitalCity).to.eql(pm.variables.get(\"HospitalCity\"));\r",
+							"pm.expect(jsonData.HospitalName).to.eql(pm.variables.get(\"HospitalName\"));\r",
+							"pm.expect(jsonData.HospitalPincode).to.eql(pm.variables.get(\"HospitalPincode\"));\r",
+							"pm.expect(jsonData.Lastname).to.eql(pm.variables.get(\"Lastname\"));\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check proper updation of HospitalStreet field\", ()=> {\r",
+							"pm.expect(jsonData.HospitalStreet).to.eql(pm.variables.get(\"HospitalStreet\"));\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adminToken_col}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"{{ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{DateOfBirth}}\",\r\n  \"Education\": \"{{Education}}\",\r\n  \"Email\": \"{{Email}}\",\r\n  \"Firstname\": \"{{Firstname}}\",\r\n  \"HospitalCity\": \"{{HospitalCity}}\",\r\n  \"HospitalName\": \"{{HospitalName}}\",\r\n  \"HospitalPincode\": \"{{HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{HospitalStreet}}\",\r\n  \"Lastname\": \"{{Lastname}}\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/dietician/1145",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"dietician",
+						"1145"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dietician with an invalid  ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"commonTests.notFoundRequest();\r",
+							"\r",
+							"const jsonData = pm.response.json();\r",
+							"const invalidDietcianID = pm.collectionVariables.get(\"invalidDietcianID\");\r",
+							"\r",
+							"pm.test(\"Error message for invalid ID\", () => {   \r",
+							" const expectedMessage = `Dietician with ${invalidDietcianID} does not exists`;\r",
+							"pm.expect(jsonData.errorMessage).to.eql(expectedMessage);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adminToken_col}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"9876543250\",\r\n  \"DateOfBirth\": \"1992-07-26\",\r\n  \"Education\": 123,\r\n  \"Email\": \"team12dietician03@gmail\",\r\n  \"Firstname\": \"Simmons\",\r\n  \"HospitalCity\": \"Test City\",\r\n  \"HospitalName\": \"St Louis\",\r\n  \"HospitalPincode\": \"123456\",\r\n  \"HospitalStreet\": \"Test Street\",\r\n  \"Lastname\": \"Miller\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/dietician/{{invalidDietcianID}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"dietician",
+						"{{invalidDietcianID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dietician by ID without mandatory fields",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"commonTests.invalidInputsRequest();\r",
+							"const jsonData = pm.response.json();\r",
+							"const expectedErrors = {\r",
+							"    lastName: \"Dietician's lastname is required!\",\r",
+							"    dHospitalName: \"Dietician's hospital name is required!\",\r",
+							"    firstName: \"Dietician's firstname is required!\",\r",
+							"    dHospitalCityName: \"Dietician's hospital city name is required!\",\r",
+							"    userLoginEmail: \"Dietician's login email is required!\",\r",
+							"    contact: \"Dietician's contact number is required!\",\r",
+							"    dEducation: \"Dietician's education is required!\",\r",
+							"    dateOfBirth: \"Date of Birth is Mandatory!\",\r",
+							"    dHospitalPinCode: \"Dietician's hospital pincode is required!\",\r",
+							"    dHospitalStreetName: \"Dietician's hospital street name is required!\"\r",
+							"};\r",
+							"\r",
+							"Object.keys(expectedErrors).forEach(field => {\r",
+							"    pm.test(`Error message for missing mandatory field ${field}`, ()=> {\r",
+							"        pm.expect(jsonData[field]).to.eql(expectedErrors[field]);\r",
+							"    });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adminToken_col}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"\",\r\n  \"DateOfBirth\": \"\",\r\n  \"Education\": \"\",\r\n  \"Email\": \"\",\r\n  \"Firstname\": \"\",\r\n  \"HospitalCity\": \"\",\r\n  \"HospitalName\": \"\",\r\n  \"HospitalPincode\": \"\",\r\n  \"HospitalStreet\": \"\",\r\n  \"Lastname\": \"\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/dietician/{{dieticianID_collec}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"dietician",
+						"{{dieticianID_collec}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Dietician by ID with invalid field inputs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"commonTests.invalidInputsRequest();\r",
+							"const jsonData = pm.response.json();\r",
+							"const expectedErrorMessage= pm.variables.get(\"ErrorMessage\");\r",
+							"\r",
+							"Object.keys(jsonData).forEach(field => {\r",
+							"pm.test(`Error message for invalid field ${field}`, ()=> {\r",
+							"        pm.expect(jsonData[field]).to.eql(expectedErrorMessage);\r",
+							"    });\r",
+							"});\r",
+							" "
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adminToken_col}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ContactNumber\": \"{{ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{DateOfBirth}}\",\r\n  \"Education\": \"{{Education}}\",\r\n  \"Email\": \"{{Email}}\",\r\n  \"Firstname\": \"{{Firstname}}\",\r\n  \"HospitalCity\": \"{{HospitalCity}}\",\r\n  \"HospitalName\": \"{{HospitalName}}\",\r\n  \"HospitalPincode\": \"{{HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{HospitalStreet}}\",\r\n  \"Lastname\": \"{{Lastname}}\"\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/dietician/{{dieticianID_collec}}",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"dietician",
+						"{{dieticianID_collec}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Dietician Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"Zion89\",\r\n  \"userLoginEmail\": \"team12dietician07@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
+					"protocol": "https",
+					"host": [
+						"dietician-july-api-hackathon-80f2590665cc",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dietician",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"// Load data from file\r",
+					"if (typeof pm.variables.get('requestsData') !== 'object') {\r",
+					"    pm.variables.set('requestsData', pm.iterationData.toObject());\r",
+					"}\r",
+					"const requestsData = pm.variables.get('requestsData');\r",
+					"\r",
+					"if (typeof requestsData !== 'object' || Object.keys(requestsData).length === 0) {\r",
+					"    console.log('No external data provided or object is empty.');\r",
+					"    return;\r",
+					"}\r",
+					"\r",
+					"// Find the current request\r",
+					"const currentRequest = requestsData.requests.filter(({ name }) => name === pm.info.requestName)[0];\r",
+					"\r",
+					"// Skip the rest since we have no data\r",
+					"if (!currentRequest) {\r",
+					"    console.log(`Request ${pm.info.requestName} has no data defined.`);\r",
+					"    return;\r",
+					"}\r",
+					"\r",
+					"// Expose variables\r",
+					"const variables = currentRequest.data.shift();\r",
+					"\r",
+					"for (const [key, value] of Object.entries(variables)) {\r",
+					"    pm.variables.set(key, value);\r",
+					"}\r",
+					"\r",
+					"pm.variables.set('requestsData', requestsData);\r",
+					"\r",
+					"// Decide where to go next\r",
+					"if (currentRequest.data.length > 0) {\r",
+					"    pm.execution.setNextRequest(pm.info.requestName);   \r",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"commonTests = {\r",
+					"    validGetPutRequest: function () {\r",
+					"        //Status code\r",
+					"        pm.test(\"Status code is 200\", () => {\r",
+					"            pm.response.to.have.status(200);\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Status code name has string\", () => {\r",
+					"            pm.response.to.have.status(\"OK\");\r",
+					"        });\r",
+					"\r",
+					"        //Header \r",
+					"        pm.test(\"Content-Type is present\", () => {\r",
+					"            pm.response.to.have.header(\"Content-Type\");\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Content-Type header is application/json\", () => {\r",
+					"            pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql('application/json');\r",
+					"        });\r",
+					"\r",
+					"        //Response time\r",
+					"        pm.test(\"Response time is less than 1000ms\", () => {\r",
+					"            pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+					"        });\r",
+					"    },\r",
+					"    unauthorizedRequest: function () {\r",
+					"        //Unauthorized\r",
+					"        pm.test(\"Status code is 401\", () => {\r",
+					"            pm.response.to.have.status(401);\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Status code name has string\", () => {\r",
+					"            pm.response.to.have.status(\"Unauthorized\");\r",
+					"        });\r",
+					"    },\r",
+					"    notFoundRequest: function () {\r",
+					"        //Invalid URL \r",
+					"        pm.test(\"Status code is 404\", () => {\r",
+					"            pm.response.to.have.status(404);\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Status code name has string\", () => {\r",
+					"            pm.response.to.have.status(\"Not Found\");\r",
+					"        });\r",
+					"    },\r",
+					"    invalidInputsRequest: function () {\r",
+					"        //Unauthorized\r",
+					"        pm.test(\"Status code is 400\", () => {\r",
+					"            pm.response.to.have.status(400);\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Status code name has string\", () => {\r",
+					"            pm.response.to.have.status(\"Bad Request\");\r",
+					"        });\r",
+					"    },\r",
+					"    morbidityGetRequest: function () {\r",
+					"        const jsonData= pm.response.json();\r",
+					"        pm.test(\"Each morbidity has required fields\", () => {\r",
+					"            //const morbidities = pm.response.json();\r",
+					"            jsonData.forEach(morbidity => {\r",
+					"                pm.expect(morbidity).to.have.property('morbidityId');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityTestId');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityNameRegex');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityTestName');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityTestUnit');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityMarkerMinVal');\r",
+					"                pm.expect(morbidity).to.have.property('morbidityMarkerMaxVal');\r",
+					"            });\r",
+					"        });\r",
+					"\r",
+					"        pm.test(\"Test data type of the response\", () => {\r",
+					"            jsonData.forEach(morbidity => {\r",
+					"                pm.expect(morbidity).to.be.an('object');\r",
+					"                pm.expect(morbidity.morbidityId).to.be.a('number');\r",
+					"                pm.expect(morbidity.morbidityTestId).to.be.a('string');\r",
+					"                pm.expect(morbidity.morbidityNameRegex).to.be.a('string');\r",
+					"                pm.expect(morbidity.morbidityTestName).to.be.a('string');\r",
+					"                pm.expect(morbidity.morbidityTestUnit).to.be.a('string');\r",
+					"                pm.expect(morbidity.morbidityMarkerMinVal).to.be.a('number');\r",
+					"                pm.expect(morbidity.morbidityMarkerMaxVal).to.be.a('number');\r",
+					"            });\r",
+					"        });\r",
+					"    }\r",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "invalidDietcianID",
+			"value": "911111"
+		},
+		{
+			"key": "dieticianID_collec",
+			"value": "911",
+			"type": "string"
+		},
+		{
+			"key": "adminToken_col",
+			"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJUZWFtMTJAZ21haWwuY29tIiwiaWF0IjoxNzIyODUzNDU3LCJleHAiOjE3MjI4ODIyNTd9.DEoUyCw7YX3MJ4HY6oIDRMzQpTzXpX7AMKuoV_BwX5rPQMNuQ5ypPrLT8ovaGZdlrDGxVBaHrziI6uh7o22dzQ"
+		}
+	]
+}
