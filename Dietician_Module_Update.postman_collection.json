@@ -530,36 +530,6 @@
 				}
 			},
 			"response": []
-		},
-		{
-			"name": "Dietician Login",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"password\": \"Zion89\",\r\n  \"userLoginEmail\": \"team12dietician07@gmail.com\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/login",
-					"protocol": "https",
-					"host": [
-						"dietician-july-api-hackathon-80f2590665cc",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"dietician",
-						"login"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"event": [
