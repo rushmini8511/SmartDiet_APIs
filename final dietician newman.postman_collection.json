@@ -1,0 +1,3851 @@
+{
+	"info": {
+		"_postman_id": "8234f83e-1e30-4175-b135-7020e88cf8b8",
+		"name": "final dietician newman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37358593",
+		"_collection_link": "https://team12-api-hackathon.postman.co/workspace/Team12_SmartDiet-APIs_Postman-H~642872c2-9787-4e43-8117-f254f6d07eba/collection/37358593-8234f83e-1e30-4175-b135-7020e88cf8b8?action=share&source=collection_link&creator=37358593"
+	},
+	"item": [
+		{
+			"name": "check Copy",
+			"item": [
+				{
+					"name": "Retrive Dietician",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}{{Getdietician}}",
+							"host": [
+								"{{BaseURL}}{{Getdietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrive with invalid endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(404);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.collectionVariables.set(\"Getdietician\", \"/diet\");\r",
+									"\r",
+									"console.log(\"Endpoint set to invalid value:\", pm.collectionVariables.get(\"Getdietician\"));\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}{{Getdietician}}",
+							"host": [
+								"{{BaseURL}}{{Getdietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "No auth Retrive dietician",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 401\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(401);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.timestamp).to.exist;\r",
+									"    pm.expect(responseData.status).to.exist;\r",
+									"    pm.expect(responseData.error).to.exist;\r",
+									"    pm.expect(responseData.path).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Timestamp is in a valid date format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.timestamp).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"\r",
+									"pm.request.auth = {\r",
+									"    type: 'noauth'\r",
+									"};\r",
+									"\r",
+									"\r",
+									"pm.request.headers.remove(\"Authorization\");\r",
+									"\r",
+									"console.log(\"Auth set to No Auth. Authorization header removed.\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}{{Getdietician}}",
+							"host": [
+								"{{BaseURL}}{{Getdietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrive with invalid baseurl",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(404);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Verify that the response body contains the expected HTML structure\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include('<!doctype html><html lang=\"en\"><head><title>HTTP Status 404 – Not Found</title>');\r",
+									"    pm.expect(pm.response.text()).to.include('body><h1>HTTP Status 404 – Not Found</h1></body></html>');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.collectionVariables.set(\"BaseURL\", \"https://dietician-july--80f2590665cc.herokuapp.com/dietician\");\r",
+									"\r",
+									"console.log(\"Base URL set to invalid value:\", pm.collectionVariables.get(\"BaseURL\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}{{Getdietician}}",
+							"host": [
+								"{{BaseURL}}{{Getdietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "no auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 401\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(401);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.request.headers.remove(\"Authorization\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}{{postdietician}}",
+							"host": [
+								"{{BaseURL}}{{postdietician}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "no auth",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123456700\",\r\n  \"DateOfBirth\": \"2022-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722720215&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=6DMqy1nOF2nxGpwa98q6C5LwZT2ZrqXlzH9LAy3nqgc%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722720215&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=6DMqy1nOF2nxGpwa98q6C5LwZT2ZrqXlzH9LAy3nqgc%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 21:23:35 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2024-08-03T21:23:35.452+00:00\",\n    \"status\": 401,\n    \"error\": \"Unauthorized\",\n    \"path\": \"/dietician/dietician\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Dietician",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// setting dietician iD to environment \r",
+									"var responseData=pm.response.json();\r",
+									"\r",
+									"pm.environment.set(\"dieticianId\", responseData.id);\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"// Test to check for schema validation in the response\r",
+									"pm.test(\"Response schema is valid\", function () {\r",
+									"    const schema = {\r",
+									"        type: \"object\",\r",
+									"        properties: {\r",
+									"            id: { type: \"number\" },\r",
+									"            loginPassword: { type: \"string\" },\r",
+									"            Firstname: { type: \"string\" },\r",
+									"            Lastname: { type: \"string\" },\r",
+									"            ContactNumber: { type: \"string\" },\r",
+									"            DateOfBirth: { type: \"string\", format: \"date-time\" },\r",
+									"            Email: { type: \"string\", format: \"email\" },\r",
+									"            HospitalName: { type: \"string\" },\r",
+									"            HospitalStreet: { type: \"string\" },\r",
+									"            HospitalCity: { type: \"string\" },\r",
+									"            HospitalPincode: { type: \"string\" },\r",
+									"            Education: { type: \"string\" }\r",
+									"        },\r",
+									"        required: [\"id\", \"loginPassword\", \"Firstname\", \"Lastname\", \"ContactNumber\", \"DateOfBirth\", \"Email\", \"HospitalName\", \"HospitalStreet\", \"HospitalCity\", \"HospitalPincode\", \"Education\"]\r",
+									"    };\r",
+									"\r",
+									"    pm.expect(pm.response.json()).to.have.jsonSchema(schema);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"const authToken = pm.environment.get(\"authToken\");\r",
+									"pm.request.headers.add({\r",
+									"    key: \"Authorization\",\r",
+									"    value: `Bearer ${authToken}`\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Dietician",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123452785\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/1025"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 23:26:52 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1025,\n    \"loginPassword\": \"Hyacinth24\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123452785\",\n    \"DateOfBirth\": \"2024-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "lastname missing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//  raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"\r",
+									"let includeLastname = pm.variables.get(\"Dietician_Lastname\") === 'false';\r",
+									"\r",
+									"//  modify the request body\r",
+									"if (!includeLastname) {\r",
+									"    // Remove the Lastname field if `Dietician_Lastname` is false\r",
+									"    delete parsedBody.Lastname;\r",
+									"}\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Dietician",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123452785\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/1025"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 23:26:52 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1025,\n    \"loginPassword\": \"Hyacinth24\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123452785\",\n    \"DateOfBirth\": \"2024-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "firstname missing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Get the raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"// Parse the JSON body\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"// Get the value of `Dietician_Firstname` from the environment or collection variables\r",
+									"let includeFirstname = pm.variables.get(\"Dietician_Firstname\") === 'false';\r",
+									"\r",
+									"// Conditionally modify the request body\r",
+									"if (!includeFirstname) {\r",
+									"    // Remove the Firstname field if `Dietician_Firstname` is false\r",
+									"    delete parsedBody.Firstname;\r",
+									"}\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Dietician",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123452785\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/1025"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 23:26:52 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1025,\n    \"loginPassword\": \"Hyacinth24\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123452785\",\n    \"DateOfBirth\": \"2024-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "DOB future date",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.dateOfBirth).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"// Get the raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"// Parse the JSON body\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"// Get the future date from the data file (assuming the data file is used for the iteration)\r",
+									"let DOB_future = pm.iterationData.get(\"DOB_future\");\r",
+									"\r",
+									"// Replace the DateOfBirth field with the future date from the data file\r",
+									"parsedBody.DateOfBirth = DOB_future;\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "dietician created Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123456785\",\r\n  \"DateOfBirth\": \"2024-10-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722716868&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=0q46FXDOZF8HidBiXXD15b7gtEfBZ4kdAXgJmi7o77A%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722716868&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=0q46FXDOZF8HidBiXXD15b7gtEfBZ4kdAXgJmi7o77A%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 20:27:48 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"dateOfBirth\": \"Date of Birth must be a date in the past or in the present\"\n}"
+						}
+					]
+				},
+				{
+					"name": "invalidpincode",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"// Get the raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"console.log(\"Original Request Body:\", requestBody);\r",
+									"\r",
+									"// Parse the JSON body\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"// Get the Dietician_invalidpincode from the data file \r",
+									"let Dietician_invalidpincode = pm.iterationData.get(\"Dietician_invalidpincode\");\r",
+									"console.log(\"Invalid Pincode from CSV:\", Dietician_invalidpincode);\r",
+									"\r",
+									"\r",
+									"// Replace the Dietician_HospitalPincode field with the invalid value from the data file\r",
+									"parsedBody.HospitalPincode = Dietician_invalidpincode;\r",
+									"console.log(\"Modified Request Body:\", JSON.stringify(parsedBody));\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required field - dHospitalPinCode\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.dHospitalPinCode).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Email empty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"//  raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"\r",
+									"let includeEmail = pm.variables.get(\"Dietician_Email\") === 'true';\r",
+									"\r",
+									"//  modify the request body\r",
+									"if (!includeEmail) {\r",
+									"  \r",
+									"    delete parsedBody.Email;\r",
+									"}\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Dietician",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123452785\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/1025"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 23:26:52 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1025,\n    \"loginPassword\": \"Hyacinth24\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123452785\",\n    \"DateOfBirth\": \"2024-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "education empty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"//  raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"\r",
+									"let includeEducation = pm.variables.get(\"Dietician_Education\") === 'false';\r",
+									"\r",
+									"//  modify the request body\r",
+									"if (!includeEducation) {\r",
+									"    // Remove the Lastname field if `Dietician_Lastname` is false\r",
+									"    delete parsedBody.Education;\r",
+									"}\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Dietician",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123452785\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/1025"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 23:26:52 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1025,\n    \"loginPassword\": \"Hyacinth24\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123452785\",\n    \"DateOfBirth\": \"2024-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "invalid endpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}{{invalidendpoint}}",
+							"host": [
+								"{{BaseURL}}{{invalidendpoint}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "existing contact details Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123456788\",\r\n  \"DateOfBirth\": \"2024-06-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"617042\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietici",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietici"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722718291&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=OsTPHIYqwfUg06z4RWlyaSdWF%2BGf%2Be0wK8SCGP%2FD%2Beo%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722718291&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=OsTPHIYqwfUg06z4RWlyaSdWF%2BGf%2Be0wK8SCGP%2FD%2Beo%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 20:51:31 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"timestamp\": \"2024-08-03T20:51:31.736+00:00\",\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/dietician/dietici\"\n}"
+						}
+					]
+				},
+				{
+					"name": "invalid baseurl",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(404);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has Content-Type header with value 'text/html'\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body contains the expected error message or title\", function () {\r",
+									"    const expectedErrorMessage = \"Heroku | Application Error\";\r",
+									"    pm.expect(pm.response.text()).to.include(expectedErrorMessage);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Validate that the 'iframe' tag is present in the response body\", function () {\r",
+									"    const responseData = pm.response.text();\r",
+									"    \r",
+									"    pm.expect(responseData).to.include('<iframe src=\"//www.herokucdn.com/error-pages/no-such-app.html\"></iframe>');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Ensure that the 'viewport' meta tag is present in the response body\", function () {\r",
+									"    const responseData = pm.response.text();\r",
+									"    \r",
+									"    pm.expect(responseData).to.include('<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{invalidbaseurl}}/dietician",
+							"host": [
+								"{{invalidbaseurl}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "existing contact details Copy 2",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123456781\",\r\n  \"DateOfBirth\": \"2024-06-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"sarateam2gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"617042\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dietician-july-api--80f2590665cc.herokuapp.com/dietician/dietician",
+									"protocol": "https",
+									"host": [
+										"dietician-july-api--80f2590665cc",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"dietician",
+										"dietician"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "563"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "2024-08-03 02:03:14.388836221 +0000 UTC"
+								},
+								{
+									"key": "Server",
+									"value": "heroku-router"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <meta charset=\"utf-8\">\n        <title>Heroku | Application Error</title>\n        <style media=\"screen\">\n      html,body,iframe {\n        margin: 0;\n        padding: 0;\n      }\n      html,body {\n        height: 100%;\n        overflow: hidden;\n      }\n      iframe {\n        width: 100%;\n        height: 100%;\n        border: 0;\n      }\n    </style>\n    </head>\n    <body>\n        <iframe src=\"//www.herokucdn.com/error-pages/no-such-app.html\"></iframe>\n    </body>\n</html>"
+						}
+					]
+				},
+				{
+					"name": "hospitalcity empty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"// Get the raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"// Parse the JSON body\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"// Get the value of `Dietician_Firstname` from the environment or collection variables\r",
+									"let includeHospitalcity = pm.variables.get(\"Dietician_Hospitalcity\") === 'true';\r",
+									"\r",
+									"// Conditionally modify the request body\r",
+									"if (!includeHospitalcity) {\r",
+									"    // Remove the Firstname field if `Dietician_Firstname` is false\r",
+									"    delete parsedBody.HospitalCity;\r",
+									"}\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Dietician",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123452785\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/1025"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 23:26:52 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1025,\n    \"loginPassword\": \"Hyacinth24\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123452785\",\n    \"DateOfBirth\": \"2024-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "hospital street empty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"// Get the raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"// Parse the JSON body\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"// Get the value of `Dietician_Firstname` from the environment or collection variables\r",
+									"let includeHospitalStreet = pm.variables.get(\"Dietician_HospitalStreet\") === 'true';\r",
+									"\r",
+									"// Conditionally modify the request body\r",
+									"if (!includeHospitalStreet) {\r",
+									"    // Remove the Firstname field if `Dietician_Firstname` is false\r",
+									"    delete parsedBody.HospitalStreet;\r",
+									"}\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Dietician",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123452785\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/1025"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 23:26:52 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1025,\n    \"loginPassword\": \"Hyacinth24\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123452785\",\n    \"DateOfBirth\": \"2024-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "hospital name missing",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"// Get the raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"// Parse the JSON body\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"// Get the value of `Dietician_Firstname` from the environment or collection variables\r",
+									"let includeHospitalName = pm.variables.get(\"Dietician_HospitalName\") === 'true';\r",
+									"\r",
+									"// Conditionally modify the request body\r",
+									"if (!includeHospitalName) {\r",
+									"    // Remove the Firstname field if `Dietician_Firstname` is false\r",
+									"    delete parsedBody.HospitalName;\r",
+									"}\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Dietician",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123452785\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722727612&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=hC9%2Fv2KJjanBUphpGfTsYB0smj6C2bgdpvILcLwrXhQ%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/1025"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 23:26:52 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1025,\n    \"loginPassword\": \"Hyacinth24\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123452785\",\n    \"DateOfBirth\": \"2024-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "invalid content type",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 415\", function () {\r",
+									"    pm.response.to.have.status(415);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message is 'Unsupported Media Type'\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"Unsupported Media Type\");\r",
+									"    pm.expect(jsonData.status).to.eql(415);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Content-Type header\r",
+									"pm.request.headers.add({\r",
+									"    key: 'Content-Type',\r",
+									"    value: 'text/plain'  \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "dietician created contactno chnaged",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123456700\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722634473&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=Oiwa0b3BW7IHcfh5604uWpN4OFzqroWq62aWuZ2nMFc%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722634473&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=Oiwa0b3BW7IHcfh5604uWpN4OFzqroWq62aWuZ2nMFc%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/807"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Aug 2024 21:34:33 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 807,\n    \"loginPassword\": \"Primrose33\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123456700\",\n    \"DateOfBirth\": \"2024-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						},
+						{
+							"name": "dietician created dob changed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123456700\",\r\n  \"DateOfBirth\": \"2022-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722635097&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=TQW4zM4RfyOZnJ93fvn3ODGkwh43pK6qjzl6C5K1MKo%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722635097&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=TQW4zM4RfyOZnJ93fvn3ODGkwh43pK6qjzl6C5K1MKo%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Location",
+									"value": "https://dietician-july-api-hackathon-80f2590665cc.herokuapp.com/dietician/dietician/812"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 02 Aug 2024 21:44:57 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 812,\n    \"loginPassword\": \"Daisy77\",\n    \"Firstname\": \"sara\",\n    \"Lastname\": \"raj\",\n    \"ContactNumber\": \"9123456700\",\n    \"DateOfBirth\": \"2022-07-26T18:14:08.570+00:00\",\n    \"Email\": \"dietician1@gmail.com\",\n    \"HospitalName\": \"stmary\",\n    \"HospitalStreet\": \"lanewheat\",\n    \"HospitalCity\": \"kitchener\",\n    \"HospitalPincode\": \"621704\",\n    \"Education\": \"M.sc\"\n}"
+						}
+					]
+				},
+				{
+					"name": "existing details contact change",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"// Get the raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"// Parse the JSON body\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"// Get the contact from the data file (assuming the data file is used for the iteration)\r",
+									"let contact_change = pm.iterationData.get(\"contact_change\");\r",
+									"\r",
+									"// Replace the contact field with the another number from the data file\r",
+									"parsedBody.ContactNumber = contact_change;\r",
+									"\r",
+									"// Update the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Error code is present in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.errorCode).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Error message is present in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.errorMessage).to.exist.and.to.be.a('string');\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}{{postdietician}}",
+							"host": [
+								"{{BaseURL}}{{postdietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "unique fields",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Get the raw request body\r",
+									"let requestBody = pm.request.body.raw;\r",
+									"\r",
+									"// Parse the JSON body\r",
+									"let parsedBody = JSON.parse(requestBody);\r",
+									"\r",
+									"// Get the  date from the data file \r",
+									"let unique_DOB = pm.iterationData.get(\"unique_DOB\");\r",
+									"let unique_contact = pm.iterationData.get(\"unique_contact\");\r",
+									"\r",
+									"\r",
+									"parsedBody.DateOfBirth = unique_DOB;\r",
+									"parsedBody.ContactNumber =unique_contact;\r",
+									"\r",
+									"// Updates the request body with the modified JSON\r",
+									"pm.request.body.raw = JSON.stringify(parsedBody);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n  \"ContactNumber\": \"{{Dietician_ContactNumber}}\",\r\n  \"DateOfBirth\": \"{{Dietician_DateOfBirth}}\",\r\n  \"Education\": \"{{Dietician_Education}}\",\r\n  \"Email\": \"{{Dietician_Email}}\",\r\n  \"Firstname\": \"{{Dietician_Firstname}}\",\r\n  \"HospitalCity\": \"{{Dietician_HospitalCity}}\",\r\n  \"HospitalName\": \"{{Dietician_HospitalName}}\",\r\n  \"HospitalPincode\": \"{{Dietician_HospitalPincode}}\",\r\n  \"HospitalStreet\": \"{{Dietician_HospitalStreet}}\",\r\n  \"Lastname\": \"{{Dietician_Lastname}}\"\r\n \r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/dietician",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"dietician"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "unique fields",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ContactNumber\": \"9123456780\",\r\n  \"DateOfBirth\": \"2024-07-26T18:14:08.570Z\",\r\n  \"Education\": \"M.sc\",\r\n  \"Email\": \"dietician1@gmail.com\",\r\n  \"Firstname\": \"sara\",\r\n  \"HospitalCity\": \"kitchener\",\r\n  \"HospitalName\": \"stmary\",\r\n  \"HospitalPincode\": \"621704\",\r\n  \"HospitalStreet\": \"lanewheat\",\r\n  \"Lastname\": \"raj\"\r\n \r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722716972&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=eJXMTEvNnYla6O7GQQ1fCNjLwSBSYuECnKx1vyyVXTg%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722716972&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=eJXMTEvNnYla6O7GQQ1fCNjLwSBSYuECnKx1vyyVXTg%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 20:29:32 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errorCode\": \"DUPLICATE_ENTITY\",\n    \"errorMessage\": \"Dietician user with given date of birth and contact already exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "(ID)Retrive  with no auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 401\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(401);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Presence of timestamp, status, error, and path fields\", function () {\r",
+									"  const responseData = pm.response.json();\r",
+									"  \r",
+									"  pm.expect(responseData).to.have.property('timestamp');\r",
+									"  pm.expect(responseData).to.have.property('status');\r",
+									"  pm.expect(responseData).to.have.property('error');\r",
+									"  pm.expect(responseData).to.have.property('path');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Timestamp is in a valid date format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.timestamp).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/, \"Timestamp should be in valid date format\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Error message is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData.error).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Error message should not be empty\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"pm.request.auth = {\r",
+									"    type: 'noauth'\r",
+									"};\r",
+									"\r",
+									"\r",
+									"pm.request.headers.remove(\"Authorization\");\r",
+									"\r",
+									"console.log(\"Auth set to No Auth. Authorization header removed.\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}{{GetIddietician}}",
+							"host": [
+								"{{BaseURL}}{{GetIddietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(ID) Retrive with Auth",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"  pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 401\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(401);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response has the required fields\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.timestamp).to.exist;\r",
+									"    pm.expect(responseData.status).to.exist;\r",
+									"    pm.expect(responseData.error).to.exist;\r",
+									"    pm.expect(responseData.path).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Timestamp is in a valid date format\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.timestamp).to.match(/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{3}Z$/);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}{{GetIddietician}}",
+							"host": [
+								"{{BaseURL}}{{GetIddietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(ID)Retrive with invalidendpoint",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.collectionVariables.set(\"GetIddietician\", \"/diet\");\r",
+									"\r",
+									"console.log(\"Endpoint set to invalid value:\", pm.collectionVariables.get(\"GetIddietician\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}{{GetIddietician}}",
+							"host": [
+								"{{BaseURL}}{{GetIddietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(ID)Retrive with BaseURLinvalid",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"BaseURL\", \"https://dietician-july--80f2590665cc.herokuapp.com/dietician\");\r",
+									"\r",
+									"console.log(\"Base URL set to invalid value:\", pm.collectionVariables.get(\"BaseURL\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseURL}}{{GetIddietician}}",
+							"host": [
+								"{{BaseURL}}{{GetIddietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dietician no auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 401\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(401);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content-Type header is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Presence of timestamp, status, error, and path fields in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.timestamp).to.exist;\r",
+									"    pm.expect(responseData.status).to.exist;\r",
+									"    pm.expect(responseData.error).to.exist;\r",
+									"    pm.expect(responseData.path).to.exist;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Error message is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData.error).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Error message should not be empty\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Path is a non-empty string\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.path).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Path should not be empty\");\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"pm.request.auth = {\r",
+									"    type: 'noauth'\r",
+									"};\r",
+									"\r",
+									"\r",
+									"pm.request.headers.remove(\"Authorization\");\r",
+									"\r",
+									"console.log(\"Auth set to No Auth. Authorization header removed.\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}{{deletedietician}}",
+							"host": [
+								"{{BaseURL}}{{deletedietician}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dietician with auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 200\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content type is text/plain\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/plain\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}{{deletedietician}}",
+							"host": [
+								"{{BaseURL}}{{deletedietician}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Dietician no auth Copy",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/dietician/{{dietician_id}}",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"dietician",
+										"{{dietician_id}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Server",
+									"value": "Cowboy"
+								},
+								{
+									"key": "Report-To",
+									"value": "{\"group\":\"heroku-nel\",\"max_age\":3600,\"endpoints\":[{\"url\":\"https://nel.heroku.com/reports?ts=1722728098&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=vCW8XHCeDvf8C8pNvm0ervEae6%2FR%2FoPU7J3JWBm7TEs%3D\"}]}"
+								},
+								{
+									"key": "Reporting-Endpoints",
+									"value": "heroku-nel=https://nel.heroku.com/reports?ts=1722728098&sid=c46efe9b-d3d2-4a0c-8c76-bfafa16c5add&s=vCW8XHCeDvf8C8pNvm0ervEae6%2FR%2FoPU7J3JWBm7TEs%3D"
+								},
+								{
+									"key": "Nel",
+									"value": "{\"report_to\":\"heroku-nel\",\"max_age\":3600,\"success_fraction\":0.005,\"failure_fraction\":0.05,\"response_headers\":[\"Via\"]}"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Xss-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000 ; includeSubDomains"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 03 Aug 2024 23:34:58 GMT"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
+								}
+							],
+							"cookie": [],
+							"body": "Deleted dietician with id-1028"
+						}
+					]
+				},
+				{
+					"name": "Dietician InvalidBaseurl",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Response status code is 404\", function () {\r",
+									"  pm.expect(pm.response.code).to.equal(404);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response content type is text/html\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"text/html\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body contains the expected error message or title\", function () {\r",
+									"    const responseData = pm.response.text();\r",
+									"    \r",
+									"    pm.expect(responseData).to.include(\"Application Error\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response body contains specific HTML elements\", function () {\r",
+									"    const responseData = pm.response.text();\r",
+									"    \r",
+									"    pm.expect(responseData).to.include(\"<html>\");\r",
+									"    pm.expect(responseData).to.include(\"<head>\");\r",
+									"    pm.expect(responseData).to.include(\"<body>\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"    \r",
+									" \r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"packages": {},
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}{{deletedietician}}",
+							"host": [
+								"{{BaseURL}}{{deletedietician}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Dietician InvalidBaseurl",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://dietician-july-api--80f2590665cc.herokuapp.com/dietician/dietician/{{dietician_id}}",
+									"protocol": "https",
+									"host": [
+										"dietician-july-api--80f2590665cc",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"dietician",
+										"dietician",
+										"{{dietician_id}}"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "563"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "2024-08-03 23:31:42.703031358 +0000 UTC"
+								},
+								{
+									"key": "Server",
+									"value": "heroku-router"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html>\n    <head>\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <meta charset=\"utf-8\">\n        <title>Heroku | Application Error</title>\n        <style media=\"screen\">\n      html,body,iframe {\n        margin: 0;\n        padding: 0;\n      }\n      html,body {\n        height: 100%;\n        overflow: hidden;\n      }\n      iframe {\n        width: 100%;\n        height: 100%;\n        border: 0;\n      }\n    </style>\n    </head>\n    <body>\n        <iframe src=\"//www.herokucdn.com/error-pages/no-such-app.html\"></iframe>\n    </body>\n</html>"
+						}
+					]
+				},
+				{
+					"name": "Dietician Invalidendpoint",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response status code is 400\", function () {\r",
+									"    pm.expect(pm.response.code).to.equal(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Content type is application/json\", function () {\r",
+									"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"ErrorCode and errorMessage fields are present in the response\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData).to.have.property('errorCode');\r",
+									"    pm.expect(responseData).to.have.property('errorMessage');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"ErrorCode and ErrorMessage fields should not be empty\", function () {\r",
+									"    const responseData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(responseData).to.be.an('object');\r",
+									"    pm.expect(responseData.errorCode).to.exist.and.to.not.be.empty;\r",
+									"    pm.expect(responseData.errorMessage).to.exist.and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.collectionVariables.set(\"deletedietician\", \"/diet\");\r",
+									"\r",
+									"console.log(\"Endpoint set to invalid value:\", pm.collectionVariables.get(\"deletedietician\"));"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}{{deletedietician}}",
+							"host": [
+								"{{BaseURL}}{{deletedietician}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
