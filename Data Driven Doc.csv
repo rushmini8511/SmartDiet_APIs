@@ -1,0 +1,23 @@
+Patient_FirstName,Patient_LastName,Patient_ContactNumber,patient_Email,Patient_Allergy,Patient_FoodPreference,Patient_CuisineCategory,Patient_DateOfBirth,patient_update_firstName,patient_update_lastName,patient_update_contactNumber,patient_update_email,patient_update_allergy,patient_update_foodPreference,patient_update_cuisineCategory,patient_update_dateOfBirth,patient_update_file,Patient_update_newFile,patient_update_newfile1,patient_Weight,patient_Height,patient_Temperature,patient_SP,patient_DP,Dietician_ContactNumber,Dietician_DateOfBirth,Dietician_Education,Dietician_Email,Dietician_Firstname, Dietician_HospitalCity,Dietician_HospitalName,Dietician_HospitalPincode,Dietician_HospitalStreet ,Dietician_Lastname,Dietician_updateExistingContactNo,Dietician_updateExistingDOB,Dietician_updateInvalidEmail,Dietician_updateContactNumber,Dietician_updateDOB,Dietician_updateEducation,Dietician_updateEmail,Dietician_updateFirstname,Dietician_updateHospitalCity,Dietician_updateHospitalName,Dietician_updatePincode,Dietician_updateHospitalStreet,Dietician_updateLastname,Dietician_updateInvalidNumber,Dietician_updateInvalidEducation,Dietician_updateInvalidEmailID,Dietician_updateInvalidFirstName,Dietician_updateInvalidCity,Dietician_updateInvalidName,Dietician_updateInvalidPincode,Dietician_updateInvalidStreet,Dietician_updateInvalidLastName,Dietician_invalidFieldsErrorMessage,Dietician_mandatoryFieldsErrorMessage
+veena,sinha,2072888838,veena@gmail.com,soy,Vegan,Lebanese,1978-12-12,joan,Raja,4324772255,big5@gmail.com,Almond,Vegetarian,Kerala,1987-03-14,C:/Users/DELL/Postman/collections/Test_reports/Diabetic.pdf,C:/Users/DELL/Postman/collections/Test_reports/Diabetic and Hemogram Test_Thyrocare lab.pdf.pdf,C:/Users/DELL/Postman/collections/Test_reports/Hypo Thyroid-Report.pdf.pdf,55.56,5.5,98.5,80,60,9123453445,1986-07-26,"M.SC.,",dietician1@gmail.com,sara,kitchener,stmarys,627014,wheatlane,Raj,1234567891,1989-07-27,sampress@gmail,9012341234,1989-07-27,B.Sc,team12dietician11@gmail.com,Laurel,Test City11,St Louis Martin,123456,Update Test Street1,Pattersons,12as36qw@#%,M.SC.!@#$%^&*(),team12die!@##$tician13@gmail.com,Basil12#$%^&*(,Test City13!@##$%$%^&^&*((),13 '!@##$%^%^&I*(@#@!#St Louis Martin,131qw#$%%3,"!@##$#$%^,Update Test Street13",Joseph!@#$ 5677,"{
+    ""firstName"": ""FirstName should only contain Alphabets"",
+    ""lastName"": ""LastName should only contain Alphabets"",
+    ""userLoginEmail"": ""Invalid Email Id!"",
+    ""contact"": ""Contact number should contain 10 digits"",
+    ""dHospitalPinCode"": ""Pincode should contain 6 digits""
+}","{
+   ""lastName"": ""Dietician's lastname is required!"",
+    ""dHospitalName"": ""Dietician's hospital name is required!"",
+    ""firstName"": ""Dietician's firstname is required!"",
+    ""dHospitalCityName"": ""Dietician's hospital city name is required!"",
+    ""userLoginEmail"": ""Dietician's login email is required!"",
+    ""contact"": ""Dietician's contact number is required!"",
+    ""dEducation"": ""Dietician's education is required!"",
+    ""dateOfBirth"": ""Date of Birth is Mandatory!"",
+    ""dHospitalPinCode"": ""Dietician's hospital pincode is required!"",
+    ""dHospitalStreetName"": ""Dietician's hospital street name is required!""
+}"
+Sam,Samy,6846337082,sam@gmail.com,Peanut,nonveg,bihari,1999-10-10,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Arches,singh,4357192299,arches@gmail.com,walnut,eggtarian,gujarati,1989-05-05,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+south, Dakota,6054335361,south@gmail.com,pecan,vegan,awadhi,1991-05-06,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+Big ,Texas,4324772251,big@gmail.com,egg,vegan,Indian,2000-04-09,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
